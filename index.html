@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>JYANUMUCYO Choir</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -880,29 +881,29 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
 
-            .hero .stats {
-                flex-direction: column;
-                gap: 2rem;
-            }
+  body {
+    font-size: 15px;
+  }
 
-            .about-content,
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+  header, section {
+    padding: 15px;
+  }
 
-            nav ul {
-                gap: 1rem;
-                font-size: 0.8rem;
-            }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
 
-            .section-title {
-                font-size: 2.5rem;
-            }
-        }
+  .member-image {
+    height: 220px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
 
         /* Smooth Scroll */
         html {
