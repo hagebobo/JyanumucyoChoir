@@ -505,37 +505,37 @@
         /* For pastors section - use more formal/clergy style images */
         #pastors .board-member:nth-child(1) .member-image {
             background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
-                              url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=320&fit=crop&crop=faces');
+                              url('Rev.Lambert.jpg');
         }
 
         #pastors .board-member:nth-child(2) .member-image {
             background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
-                              url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=320&fit=crop&crop=faces');
+                              url('Rev.Phenias.jpg');
         }
 
         #pastors .board-member:nth-child(3) .member-image {
             background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
-                              url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=320&fit=crop&crop=faces');
+                              url('Rev.Phenias.jpg');
         }
 
         #pastors .board-member:nth-child(4) .member-image {
             background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
-                              url('https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=320&fit=crop&crop=faces');
+                              url('Rev.Sam.jpg');
         }
 
         #pastors .board-member:nth-child(5) .member-image {
             background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
-                              url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=320&fit=crop&crop=faces');
+                              url('Rev.KAMUYUMBU.jpg');
         }
 
         #pastors .board-member:nth-child(6) .member-image {
             background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
-                              url('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=320&fit=crop&crop=faces');
+                              url('Rev.Flix.jpg');
         }
 
         #pastors .board-member:nth-child(7) .member-image {
             background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
-                              url('https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=400&h=320&fit=crop&crop=faces');
+                              url('Rev.KAMUYUMBU.jpg');
         }
 
         .member-info {
@@ -908,6 +908,31 @@
         html {
             scroll-behavior: smooth;
         }
+        @media (max-width: 768px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  header, section {
+    padding: 15px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-image {
+    height: 220px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
     </style>
 </head>
 <body>
