@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JYANUMUCYO Choir</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --secondary: #c8a882;
+            --accent: #8b4513;
+            --dark: #0f1419;
+            --light: #f8f6f3;
+            --gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(26, 77, 46, 0.85), rgba(15, 20, 25, 0.85)), 
+                        url('P1.jpeg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            animation: pulseGlow 4s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 0.3s forwards;
+        }
+
+        .hero .stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease 0.6s forwards;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(135deg, #f8f6f3 0%, #ede8e0 100%);
+        }
+
+        section:nth-child(odd) {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f3f0 100%);
+        }
+
+        #about {
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+                        url('P1.jpeg') center/cover fixed;
+        }
+
+        #mission {
+            background: linear-gradient(rgba(248,246,243,0.97), rgba(248,246,243,0.97)),
+                        url('P1.jpeg') center/cover fixed;
+        }
+
+        #board {
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+                        url('P1.jpeg') center/cover fixed;
+        }
+
+        #pastors {
+            background: linear-gradient(rgba(248,246,243,0.97), rgba(248,246,243,0.97)),
+                        url('P1.jpeg') center/cover fixed;
+        }
+
+        /* Add decorative elements */
+        #mission::before,
+        #board::before,
+        #pastors::before {
+            content: '♫';
+            position: absolute;
+            font-size: 20rem;
+            color: rgba(212, 175, 55, 0.05);
+            right: -50px;
+            top: 50%;
+            transform: translateY(-50%) rotate(15deg);
+            font-family: 'Cormorant Garamond', serif;
+            z-index: 0;
+        }
+
+        section > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--gold);
+            margin: 1rem auto;
+        }
+
+        /* Mission, Vision, Values */
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .mvv-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--gold);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mvv-card::before {
+            content: '✦';
+            position: absolute;
+            font-size: 8rem;
+            color: rgba(212, 175, 55, 0.05);
+            top: -20px;
+            right: -20px;
+            transform: rotate(-15deg);
+        }
+
+        .mvv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+        }
+
+        .mvv-card h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .mvv-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(135deg, rgba(26, 77, 46, 0.8), rgba(139, 69, 19, 0.8)),
+                        url('P1.jpeg') center/cover;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .about-image::before {
+            content: '♪';
+            position: absolute;
+            font-size: 15rem;
+            color: rgba(255,255,255,0.08);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        .about-image.stats-bg {
+            flex-direction: column;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(26, 77, 46, 0.9), rgba(139, 69, 19, 0.9)),
+                        url('P1.jpeg') center/cover;
+        }
+
+        .about-image.stats-bg::before {
+            content: '';
+            z-index: 0;
+        }
+
+        .about-image.stats-bg .stat-overlay {
+            font-family: 'Cormorant Garamond', serif;
+            color: white;
+            text-align: center;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+            position: relative;
+            z-index: 2;
+            background: rgba(0,0,0,0.3);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .about-image.stats-bg .stat-overlay .big-number {
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .about-image.stats-bg .stat-overlay .stat-text {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 0.5rem;
+        }
+
+        /* Board Committee */
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .board-member {
+            background: linear-gradient(to bottom, #ffffff, #fafafa);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .board-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .board-member:hover::before {
+            transform: scaleX(1);
+        }
+
+        .board-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 320px;
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+        }
+
+        .member-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40%;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+        }
+
+        /* Default placeholder backgrounds for board members */
+        .board-member:nth-child(1) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(2) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(3) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(4) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(5) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(6) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(7) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(8) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(9) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(10) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(11) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(12) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(13) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .board-member:nth-child(14) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        /* For pastors section - use more formal/clergy style images */
+        #pastors .board-member:nth-child(1) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        #pastors .board-member:nth-child(2) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        #pastors .board-member:nth-child(3) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        #pastors .board-member:nth-child(4) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        #pastors .board-member:nth-child(5) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        #pastors .board-member:nth-child(6) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        #pastors .board-member:nth-child(7) .member-image {
+            background-image: linear-gradient(135deg, rgba(26, 77, 46, 0.5), rgba(139, 69, 19, 0.5)),
+                              url('https://images.unsplash.com/photo-1531384441138-2736e62e0919?w=400&h=320&fit=crop&crop=faces');
+        }
+
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .member-role {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .member-responsibilities {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .member-responsibilities ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .member-responsibilities li {
+            padding: 0.4rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .member-responsibilities li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* Individual gallery images */
+        .gallery-item:nth-child(1) {
+            background: linear-gradient(rgba(26, 77, 46, 0.3), rgba(26, 77, 46, 0.3)),
+                        url('P2.jpeg') center/cover;
+        }
+
+        .gallery-item:nth-child(2) {
+            background: linear-gradient(rgba(26, 77, 46, 0.3), rgba(26, 77, 46, 0.3)),
+                        url('P3.jpeg') center/cover;
+        }
+
+        .gallery-item:nth-child(3) {
+            background: linear-gradient(rgba(26, 77, 46, 0.3), rgba(26, 77, 46, 0.3)),
+                        url('P4.jpeg') center/cover;
+        }
+
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(rgba(26, 77, 46, 0.3), rgba(26, 77, 46, 0.3)),
+                        url('P1.jpeg') center/cover;
+        }
+
+        .gallery-item:nth-child(5) {
+            background: linear-gradient(rgba(26, 77, 46, 0.3), rgba(26, 77, 46, 0.3)),
+                        url('P2.jpeg') center/cover;
+        }
+
+        .gallery-item:nth-child(6) {
+            background: linear-gradient(rgba(26, 77, 46, 0.3), rgba(26, 77, 46, 0.3)),
+                        url('P3.jpeg') center/cover;
+        }
+
+        .gallery-item:nth-child(7) {
+            background: linear-gradient(rgba(26, 77, 46, 0.3), rgba(26, 77, 46, 0.3)),
+                        url('P4.jpeg') center/cover;
+        }
+
+        .gallery-item:nth-child(8) {
+            background: linear-gradient(rgba(26, 77, 46, 0.3), rgba(26, 77, 46, 0.3)),
+                        url('P2.jpeg') center/cover;
+        }
+
+        .gallery-item:nth-child(9) {
+            background: linear-gradient(rgba(26, 77, 46, 0.3), rgba(26, 77, 46, 0.3)),
+                        url('P1.jpeg') center/cover;
+        }
+
+        /* Events */
+        #events {
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+                        url('P3.jpeg') center/cover fixed;
+        }
+
+        .events-list {
+            max-width: 900px;
+            margin: 3rem auto;
+        }
+
+        .event-item {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--gold);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .event-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .event-date {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .event-description {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Contact & Join */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '✉';
+            position: absolute;
+            font-size: 12rem;
+            color: rgba(212, 175, 55, 0.05);
+            bottom: -30px;
+            right: -30px;
+            transform: rotate(-15deg);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-item strong {
+            color: var(--accent);
+            min-width: 100px;
+        }
+
+        .join-form {
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .join-form::before {
+            content: '♪';
+            position: absolute;
+            font-size: 12rem;
+            color: rgba(212, 175, 55, 0.05);
+            top: -30px;
+            right: -30px;
+            transform: rotate(15deg);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .join-form h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, rgba(15, 20, 25, 0.95), rgba(26, 77, 46, 0.95)),
+                        url('https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=1920&q=80') center/cover;
+            color: var(--light);
+            text-align: center;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+        }
+
+        footer > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--gold);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero .stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#mission">Mission & Vision</a></li>
+            <li><a href="#board">Board Committee</a></li>
+            <li><a href="#pastors">Our Pastors</a></li>
+            <li><a href="#members">Members</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#join">Join Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>JYANUMUCYO</h1>
+            <p class="tagline">Voices United in Harmony</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">60</div>
+                    <div class="stat-label">Active Members</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">29</div>
+                    <div class="stat-label">Years Active</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Performances</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">Pastors Raised</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Welcome to JYANUMUCYO Choir</h3>
+                <p>JYANUMUCYO is a vibrant and dynamic choir from the EAR (Episcopal Anglican Church of Rwanda) Diocese of Butare, dedicated to spreading joy, faith, and unity through music since 1995. As part of the NNCA (National Network of Catholic Artists) section, we have been touching hearts and souls for 29 years.</p>
+                <p>Based in Butare, our choir brings together talented voices from diverse backgrounds, united by our passion for worship and excellence in choral performance. We currently have 60 active members, with an additional 60 members working in various places around the country, maintaining their connection to our choir family.</p>
+                <p>With a rich repertoire spanning traditional hymns to contemporary gospel, JYANUMUCYO continues to be a beacon of musical excellence and spiritual devotion in the EAR Diocese Butare. We are particularly proud that our choir has been a spiritual foundation for 7 ordained pastors who have gone on to serve in ministry, a testament to our commitment to both musical and spiritual formation.</p>
+            </div>
+            <div class="about-image stats-bg">
+                <div class="stat-overlay">
+                    <div class="big-number">60</div>
+                    <div class="stat-text">Active Members</div>
+                </div>
+                <div class="stat-overlay">
+                    <div class="big-number">29</div>
+                    <div class="stat-text">Years Since 1995</div>
+                </div>
+                <div class="stat-overlay">
+                    <div class="big-number">7</div>
+                    <div class="stat-text">Pastors Raised</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values -->
+    <section id="mission">
+        <h2 class="section-title">Mission, Vision & Values</h2>
+        <div class="mvv-grid">
+            <div class="mvv-card">
+                <h3>Our Mission</h3>
+                <p>To glorify God through exceptional musical worship and to spread the message of faith, hope, and love to our community and beyond. We strive to create transformative worship experiences that bring people closer to God through the power of harmonious voices.</p>
+            </div>
+            <div class="mvv-card">
+                <h3>Our Vision</h3>
+                <p>To be a leading voice in spiritual music, inspiring generations through our dedication to artistic excellence and spiritual depth. We envision a community united through song, where every voice matters and every performance reflects God's glory.</p>
+            </div>
+            <div class="mvv-card">
+                <h3>Our Values</h3>
+                <p>Excellence in worship, Unity in diversity, Spiritual growth, Community service, Musical innovation, Respect and dignity, Continuous learning, Faith-centered performance, Inclusive fellowship, and Joyful celebration of God's gifts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Board Committee -->
+    <section id="board">
+        <h2 class="section-title">Board Committee</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: #555; margin-bottom: 3rem;">Meet our dedicated leadership team committed to guiding JYANUMUCYO to excellence</p>
+        
+        <div class="board-grid">
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">KWIZERA Jean Pierre</h3>
+                    <p class="member-role">President</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Overall choir leadership and vision</li>
+                            <li>Strategic planning and decision making</li>
+                            <li>Representing the choir externally</li>
+                            <li>Coordinating all departments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">MUMPOREZE Diane</h3>
+                    <p class="member-role">Vice President</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Supporting the President</li>
+                            <li>Acting in President's absence</li>
+                            <li>Overseeing special projects</li>
+                            <li>Member engagement initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">KANYANGE Francine</h3>
+                    <p class="member-role">Secretary</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Meeting minutes and documentation</li>
+                            <li>Official correspondence management</li>
+                            <li>Record keeping and archives</li>
+                            <li>Administrative coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">ISHIMWE Epimac</h3>
+                    <p class="member-role">Diligence Officer 1</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Attendance monitoring</li>
+                            <li>Practice session coordination</li>
+                            <li>Member punctuality oversight</li>
+                            <li>Performance preparation tracking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">GIKUNDIRO Jean Petit</h3>
+                    <p class="member-role">Diligence Officer 2</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Supporting primary diligence officer</li>
+                            <li>Record keeping and documentation</li>
+                            <li>Member commitment evaluation</li>
+                            <li>Progress reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">HAGENIMANA Jean Bosco</h3>
+                    <p class="member-role">Communication Lead</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Internal and external communications</li>
+                            <li>Social media management</li>
+                            <li>Event announcements</li>
+                            <li>Public relations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">NIYIGUHA Jeremie</h3>
+                    <p class="member-role">Technical Officer</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Audio/visual equipment management</li>
+                            <li>Recording and sound quality</li>
+                            <li>Technical setup for events</li>
+                            <li>Digital content creation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">UMULISA Jeanne</h3>
+                    <p class="member-role">Accountant</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Financial management and budgeting</li>
+                            <li>Maintaining financial records</li>
+                            <li>Financial reporting to board</li>
+                            <li>Fundraising coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">HIRWA Seth</h3>
+                    <p class="member-role">Spirituality Coordinator</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Spiritual guidance and support</li>
+                            <li>Prayer sessions coordination</li>
+                            <li>Liturgical planning assistance</li>
+                            <li>Faith formation activities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">UWAMBAJIMANA Sylvere</h3>
+                    <p class="member-role">Development Officer</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Training and skill development</li>
+                            <li>Workshop organization</li>
+                            <li>Member talent cultivation</li>
+                            <li>Performance improvement programs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Anysie</h3>
+                    <p class="member-role">Disciplinary Officer</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Maintaining choir standards</li>
+                            <li>Code of conduct enforcement</li>
+                            <li>Conflict resolution</li>
+                            <li>Behavioral guidelines oversight</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">MUSEMAKWELI Christopher</h3>
+                    <p class="member-role">Counseling Lead</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Member support and guidance</li>
+                            <li>Personal issue counseling</li>
+                            <li>Mental health awareness</li>
+                            <li>Peer support coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Joyeuse</h3>
+                    <p class="member-role">Counseling Assistant</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Supporting counseling lead</li>
+                            <li>Confidential member assistance</li>
+                            <li>Wellness program coordination</li>
+                            <li>Follow-up care</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Francoise</h3>
+                    <p class="member-role">Social Events Coordinator</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Planning social gatherings</li>
+                            <li>Team building activities</li>
+                            <li>Fellowship event organization</li>
+                            <li>Community outreach programs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pastors from JYANUMUCYO -->
+    <section id="pastors">
+        <h2 class="section-title">Pastors Raised from JYANUMUCYO</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: #555; margin-bottom: 3rem;">
+            We are blessed and honored that 7 pastors have been nurtured and raised through our choir, serving God in various ministries
+        </p>
+        
+        <div class="board-grid">
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Rev. NGENDAHAYO Lambert</h3>
+                    <p class="member-role">Ordained Pastor</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Former JYANUMUCYO Member</li>
+                            <li>Raised through choir ministry</li>
+                            <li>Currently serving in pastoral ministry</li>
+                            <li>A testament to our spiritual formation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Rev. Edmon</h3>
+                    <p class="member-role">Ordained Pastor</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Former JYANUMUCYO Member</li>
+                            <li>Raised through choir ministry</li>
+                            <li>Currently serving in pastoral ministry</li>
+                            <li>A testament to our spiritual formation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Rev. Phenias</h3>
+                    <p class="member-role">Ordained Pastor</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Former JYANUMUCYO Member</li>
+                            <li>Raised through choir ministry</li>
+                            <li>Currently serving in pastoral ministry</li>
+                            <li>A testament to our spiritual formation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Rev. Sam</h3>
+                    <p class="member-role">Ordained Pastor</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Former JYANUMUCYO Member</li>
+                            <li>Raised through choir ministry</li>
+                            <li>Currently serving in pastoral ministry</li>
+                            <li>A testament to our spiritual formation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Rev. KAMUYUMBU Claudine</h3>
+                    <p class="member-role">Ordained Pastor</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Former JYANUMUCYO Member</li>
+                            <li>Raised through choir ministry</li>
+                            <li>Currently serving in pastoral ministry</li>
+                            <li>A testament to our spiritual formation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Rev. NIYIGABA Felix</h3>
+                    <p class="member-role">Ordained Pastor</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Former JYANUMUCYO Member</li>
+                            <li>Raised through choir ministry</li>
+                            <li>Currently serving in pastoral ministry</li>
+                            <li>A testament to our spiritual formation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="board-member">
+                <div class="member-image"></div>
+                <div class="member-info">
+                    <h3 class="member-name">Rev. [Name To Be Added]</h3>
+                    <p class="member-role">Ordained Pastor</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Former JYANUMUCYO Member</li>
+                            <li>Raised through choir ministry</li>
+                            <li>Currently serving in pastoral ministry</li>
+                            <li>A testament to our spiritual formation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Members Section -->
+    <section id="members">
+        <h2 class="section-title">Our Members</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>A Family of Voices</h3>
+                <p>JYANUMUCYO is blessed with 60 dedicated active members who come together regularly to practice, perform, and grow in their musical and spiritual journey. Additionally, we have 60 members who are working in various places across Rwanda and beyond, maintaining their connection to our choir family.</p>
+                <p>We pride ourselves on our inclusive community where every member is valued and encouraged to develop their talents. Through regular rehearsals, workshops, and performances, our members continuously refine their skills while building lasting friendships.</p>
+                <p>Each member plays a vital role in our success, from sopranos and altos to tenors and basses, creating the rich harmonies that JYANUMUCYO is known for. We are also proud that our choir has nurtured 7 individuals who went on to become ordained pastors, demonstrating our deep commitment to spiritual formation alongside musical excellence.</p>
+            </div>
+            <div class="about-image" style="background: linear-gradient(135deg, rgba(26, 77, 46, 0.8), rgba(139, 69, 19, 0.8)), url('P1.jpeg') center/cover;"></div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2 class="section-title">Gallery</h2>
+        <p style="text-align: center; font-size: 1.2rem; color: #555; margin-bottom: 3rem;">Moments captured from our performances and events</p>
+        <div class="gallery-grid">
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+            <div class="gallery-item"></div>
+        </div>
+    </section>
+
+    <!-- Events -->
+    <section id="events">
+        <h2 class="section-title">Upcoming Events & Performances</h2>
+        <div class="events-list">
+            <div class="event-item">
+                <div class="event-date">March 15, 2026</div>
+                <h3 class="event-title">Easter Celebration Concert</h3>
+                <p class="event-description">Join us for a special Easter celebration featuring traditional hymns and contemporary worship songs. The event will be held at the Cathedral starting at 6:00 PM.</p>
+            </div>
+            <div class="event-item">
+                <div class="event-date">April 20, 2026</div>
+                <h3 class="event-title">NNCA Regional Festival</h3>
+                <p class="event-description">JYANUMUCYO will be performing at the Regional NNCA Festival, showcasing our finest pieces alongside other talented choirs from across the region.</p>
+            </div>
+            <div class="event-item">
+                <div class="event-date">May 10, 2026</div>
+                <h3 class="event-title">Community Outreach Performance</h3>
+                <p class="event-description">A special performance at the Community Center aimed at spreading hope and inspiration through music. Free admission, all are welcome.</p>
+            </div>
+            <div class="event-item">
+                <div class="event-date">Weekly</div>
+                <h3 class="event-title">Choir Practice</h3>
+                <p class="event-description">Every Saturday from 3:00 PM to 6:00 PM. All members are expected to attend. New members are welcome to observe and join!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Join -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <span>jyanumucyochoir@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Phone:</strong>
+                    <span>+250 788 861 369</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Location:</strong>
+                    <span>EAR Diocese Butare, Rwanda</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Practice:</strong>
+                    <span>Every Wednesday and Friday,17:15 PM - 19:30 PM</span>
+                </div>
+                <div class="contact-item">
+                    <strong>Office Hours:</strong>
+                    <span>Monday - Friday, 9:00 AM - 5:00 PM</span>
+                </div>
+            </div>
+
+            <div id="join" class="join-form">
+                <h3>Join JYANUMUCYO</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="voice">Voice Part</label>
+                        <select id="voice" name="voice" required>
+                            <option value="">Select your voice type</option>
+                            <option value="soprano">Soprano</option>
+                            <option value="alto">Alto</option>
+                            <option value="tenor">Tenor</option>
+                            <option value="bass">Bass</option>
+                            <option value="unsure">Not Sure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="experience">Musical Experience</label>
+                        <textarea id="experience" name="experience" rows="4" placeholder="Tell us about your musical background and experience..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Why do you want to join JYANUMUCYO?</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Share your motivation..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">JYANUMUCYO</h2>
+        <p>EAR Diocese Butare</p>
+        <p>&copy; 2026 JYANUMUCYO Choir. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://facebook.com/JyanumucyoChoir" target="_blank" title="Facebook">📘</a>
+            <a href="https://twitter.com/JyanumucyoChoir" target="_blank" title="Twitter/X">🐦</a>
+            <a href="/cdn-cgi/l/email-protection#43293a222d362e36203a2c202b2c2a3103242e222a2f6d202c2e" title="Email">✉️</a>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.querySelector('.join-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you');
+        }
