@@ -908,6 +908,31 @@
         html {
             scroll-behavior: smooth;
         }
+        @media (max-width: 768px) {
+
+  body {
+    font-size: 15px;
+  }
+
+  header, section {
+    padding: 15px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-image {
+    height: 220px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
     </style>
 </head>
 <body>
