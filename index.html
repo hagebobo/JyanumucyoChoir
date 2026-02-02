@@ -314,6 +314,9 @@
             height: 500px;
             background: linear-gradient(135deg, rgba(26, 77, 46, 0.8), rgba(139, 69, 19, 0.8)),
                         url('P1.jpeg') center/cover;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
             border-radius: 20px;
             position: relative;
             overflow: hidden;
@@ -419,6 +422,9 @@
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .member-image::after {
@@ -603,7 +609,8 @@
             cursor: pointer;
             transition: transform 0.3s ease;
             background-size: cover;
-            background-position: center;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
 
         .gallery-item:hover {
@@ -879,30 +886,324 @@
             transform: scale(1.2);
         }
 
-        /* Responsive */
+        /* Responsive - Mobile First */
+        @media (max-width: 1024px) {
+            section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .about-content {
+                gap: 2rem;
+            }
+            
+            .board-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
+            /* Navigation */
+            nav {
+                padding: 0.8rem 0;
+            }
+            
+            nav ul {
+                gap: 0.8rem;
+                padding: 0 1rem;
+                justify-content: center;
+            }
+            
+            nav a {
+                font-size: 0.75rem;
+                letter-spacing: 0.5px;
+                padding: 0.4rem 0.6rem;
+                display: inline-block;
+            }
+
+            /* Hero Section */
+            .hero {
+                height: auto;
+                min-height: 100vh;
+                padding: 6rem 1rem 3rem;
+            }
+            
             .hero h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
+                letter-spacing: 2px;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+                letter-spacing: 1px;
             }
 
             .hero .stats {
                 flex-direction: column;
                 gap: 2rem;
+                margin-top: 2rem;
             }
 
-            .about-content,
-            .contact-grid {
-                grid-template-columns: 1fr;
+            .stat-number {
+                font-size: 2.5rem;
             }
 
-            nav ul {
-                gap: 1rem;
+            .stat-label {
                 font-size: 0.8rem;
             }
 
-            .section-title {
-                font-size: 2.5rem;
+            /* Sections */
+            section {
+                padding: 3rem 1rem;
             }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-title::after {
+                width: 60px;
+                height: 3px;
+            }
+
+            /* About & Members */
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-text h3 {
+                font-size: 1.8rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .about-image.stats-bg .stat-overlay .big-number {
+                font-size: 3rem;
+            }
+
+            .about-image.stats-bg .stat-overlay .stat-text {
+                font-size: 1rem;
+            }
+
+            /* Mission Cards */
+            .mvv-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .mvv-card {
+                padding: 2rem;
+            }
+
+            .mvv-card h3 {
+                font-size: 1.5rem;
+            }
+
+            /* Board Members */
+            .board-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .member-image {
+                aspect-ratio: 1;
+            }
+
+            .member-name {
+                font-size: 1.3rem;
+            }
+
+            .member-role {
+                font-size: 0.9rem;
+            }
+
+            /* Gallery */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .gallery-item {
+                aspect-ratio: 1;
+            }
+
+            /* Events */
+            .event-item {
+                padding: 1.5rem;
+            }
+
+            .event-title {
+                font-size: 1.4rem;
+            }
+
+            /* Contact */
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info,
+            .join-form {
+                padding: 2rem;
+            }
+
+            .contact-info h3,
+            .join-form h3 {
+                font-size: 1.5rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .contact-item strong {
+                min-width: auto;
+            }
+
+            /* Footer */
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            .social-links {
+                gap: 1.5rem;
+            }
+
+            /* Decorative elements - hide on mobile */
+            #mission::before,
+            #board::before,
+            #pastors::before {
+                font-size: 10rem;
+                opacity: 0.3;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Extra small devices */
+            nav ul {
+                gap: 0.4rem;
+                padding: 0 0.5rem;
+                justify-content: center;
+            }
+            
+            nav a {
+                font-size: 0.6rem;
+                padding: 0.35rem 0.5rem;
+                white-space: nowrap;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .about-image {
+                height: 250px;
+            }
+
+            .mvv-card {
+                padding: 1.5rem;
+            }
+
+            .event-item {
+                padding: 1rem;
+            }
+
+            .event-title {
+                font-size: 1.2rem;
+            }
+
+            .submit-btn {
+                padding: 0.8rem 2rem;
+                font-size: 1rem;
+            }
+
+            /* Hide very large decorative elements on small screens */
+            .mvv-card::before,
+            .contact-info::before,
+            .join-form::before {
+                display: none;
+            }
+        }
+
+        /* Image fixes - ensure all images display properly */
+        .member-image {
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
+        }
+
+        /* Additional image optimization for better visibility */
+        .gallery-item {
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+            min-height: 250px;
+        }
+
+        /* Ensure hero background is always visible */
+        .hero {
+            background-size: cover !important;
+            background-position: center center !important;
+            background-attachment: scroll !important;
+        }
+
+        /* Ensure about images are always visible */
+        .about-image {
+            background-size: cover !important;
+            background-position: center center !important;
+            background-repeat: no-repeat !important;
+        }
+
+        /* Fix for section backgrounds on mobile */
+        @media (max-width: 768px) {
+            #about, #mission, #board, #pastors, #events {
+                background-attachment: scroll !important;
+            }
+            
+            .gallery-item {
+                min-height: 200px;
+            }
+            
+            .member-image {
+                min-height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                min-height: 180px;
+            }
+            
+            .member-image {
+                min-height: 200px;
+            }
+        }
+
+        .gallery-item {
+            background-size: cover !important;
+            background-position: center !important;
+            background-repeat: no-repeat !important;
         }
 
         /* Smooth Scroll */
@@ -1493,7 +1794,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1504,4 +1805,44 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-          
+                }
+            });
+        });
+
+        // Form submission handler
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your interest! We will contact you soon.');
+                form.reset();
+            });
+        }
+
+        // Add loading optimization for images
+        document.addEventListener('DOMContentLoaded', function() {
+            // Force repaint on images to ensure they load properly
+            const images = document.querySelectorAll('.member-image, .gallery-item, .about-image');
+            images.forEach(img => {
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.style.transition = 'opacity 0.5s ease';
+                    img.style.opacity = '1';
+                }, 100);
+            });
+        });
+
+        // Optimize background image loading on scroll
+        let scrollTimeout;
+        window.addEventListener('scroll', function() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(function() {
+                // Trigger background image reflow
+                document.querySelectorAll('section[style*="background"]').forEach(section => {
+                    section.style.backgroundAttachment = section.style.backgroundAttachment;
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
