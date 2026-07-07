@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership - JYANUMUCYO Choir</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --secondary: #c8a882;
+            --accent: #8b4513;
+            --dark: #0f1419;
+            --light: #f8f6f3;
+            --gold: #d4af37;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after,
+        nav a.active::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Leadership Section */
+        .leadership-section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 4rem;
+        }
+
+        /* Board Grid */
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-bottom: 5rem;
+        }
+
+        .board-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .board-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .member-info {
+            padding: 2rem;
+        }
+
+        .member-name {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: var(--gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+        }
+
+        .member-responsibilities {
+            margin-top: 1.5rem;
+        }
+
+        .member-responsibilities ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .member-responsibilities li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .member-responsibilities li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer h2 {
+            color: var(--gold);
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: var(--gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .board-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="mission.html">Mission</a></li>
+            <li><a href="history.html">History</a></li>
+            <li><a href="leadership.html" class="active">Leadership</a></li>
+            <li><a href="pastors.html">Pastors</a></li>
+            <li><a href="members.html">Members</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="join.html">Join Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Our Leadership</h1>
+        <p>Meet the dedicated individuals who guide and inspire JYANUMUCYO Choir</p>
+    </div>
+
+    <!-- Leadership Section -->
+    <section class="leadership-section">
+        <h2 class="section-title">Executive Committee  2025-2027</h2>
+        <p class="section-subtitle">Our talented and committed leadership team</p>
+
+        <div class="board-grid">
+            <!-- President -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Jean_Pierre.jpg" alt="KWIZERA Jean Pierre - President">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">KWIZERA Jean Pierre</h3>
+                    <p class="member-role">President</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Overall choir leadership and vision</li>
+                            <li>Strategic planning and decision making</li>
+                            <li>Representing the choir externally</li>
+                            <li>Coordinating all departments</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vice President -->
+            <div class="board-member">
+                <div class="member-image">
+                  <img src="Diane.jpeg" alt="MUMPOREZE Diane - Vice President">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">MUMPOREZE Diane</h3>
+                    <p class="member-role">Vice President</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Supporting the President</li>
+                            <li>Acting in President's absence</li>
+                            <li>Overseeing special projects</li>
+                            <li>Member engagement initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secretary -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Francine.jpeg" alt="KANYANGE Francine - Secretary">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">KANYANGE Francine</h3>
+                    <p class="member-role">Secretary</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Meeting minutes and documentation</li>
+                            <li>Official correspondence management</li>
+                            <li>Record keeping and archives</li>
+                            <li>Administrative coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conductor 1 -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Epimizo.png" alt="ISHIMWE Epimac - Conductor 1">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">ISHIMWE Epimac</h3>
+                    <p class="member-role">Conductor 1</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Attendance monitoring</li>
+                            <li>Practice session coordination</li>
+                            <li>Member punctuality oversight</li>
+                            <li>Performance preparation tracking</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conductor 2 -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Gikundiro.jpeg" alt="GIKUNDIRO Jean Petit - Conductor 2">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">GIKUNDIRO Jean Petit</h3>
+                    <p class="member-role">Conductor 2</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Supporting primary diligence officer</li>
+                            <li>Record keeping and documentation</li>
+                            <li>Member commitment evaluation</li>
+                            <li>Progress reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Media and Communication -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Jeremie.jpeg" alt="NIYIGUHA Jeremie - Media and Communication">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">NIYIGUHA Jeremie</h3>
+                    <p class="member-role">Media and Communication</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Internal and external communications</li>
+                            <li>Social media management</li>
+                            <li>Event announcements</li>
+                            <li>Public relations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- IT and Technics Officer -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Bobo.jpg" alt="HAGENIMANA Jean Bosco - IT and Technics Officer">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">HAGENIMANA Jean Bosco</h3>
+                    <p class="member-role">IT and Technics Officer</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Audio/visual equipment management</li>
+                            <li>Recording and sound quality</li>
+                            <li>Technical setup for events</li>
+                            <li>Digital content creation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accountant -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="MarieJeanne.jpg" alt="UMULISA Marie Jeanne - Accountant">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">UMULISA Marie Jeanne</h3>
+                    <p class="member-role">Accountant</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Financial management and budgeting</li>
+                            <li>Maintaining financial records</li>
+                            <li>Financial reporting to board</li>
+                            <li>Fundraising coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spirituality Coordinator -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Seth.jpeg" alt="HIRWA Seth - Spirituality Coordinator">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">HIRWA Seth</h3>
+                    <p class="member-role">Spirituality Coordinator</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Spiritual guidance and support</li>
+                            <li>Prayer sessions coordination</li>
+                            <li>Liturgical planning assistance</li>
+                            <li>Faith formation activities</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Development Officer -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Sylvere.jpeg" alt="UWAMBAJIMANA Sylvere - Development Officer">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">UWAMBAJIMANA Sylvere</h3>
+                    <p class="member-role">Development Officer</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Training and skill development</li>
+                            <li>Workshop organization</li>
+                            <li>Member talent cultivation</li>
+                            <li>Performance improvement programs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disciplinary Officer -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Anysie.jpg" alt="UWIMANA Anysie - Disciplinary Officer">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">UWIMANA Anysie</h3>
+                    <p class="member-role">Disciplinary Officer</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Maintaining choir standards</li>
+                            <li>Code of conduct enforcement</li>
+                            <li>Conflict resolution</li>
+                            <li>Behavioral guidelines oversight</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advisor 1 -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Christopher.jpeg" alt="MUSEMAKWELI Christopher - Advisor 1">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">MUSEMAKWELI Christopher</h3>
+                    <p class="member-role">Advisor 1</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Member support and guidance</li>
+                            <li>Personal issue counseling</li>
+                            <li>Mental health awareness</li>
+                            <li>Peer support coordination</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advisor 2 -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Joyeuse.jpg" alt="BYUMVUHORE Joyeuse - Advisor 2">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">BYUMVUHORE Joyeuse</h3>
+                    <p class="member-role">Advisor 2</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Supporting counseling lead</li>
+                            <li>Confidential member assistance</li>
+                            <li>Wellness program coordination</li>
+                            <li>Follow-up care</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Events Coordinator -->
+            <div class="board-member">
+                <div class="member-image">
+                    <img src="Francoise.jpeg" alt="Francoise - Social Events Coordinator">
+                </div>
+                <div class="member-info">
+                    <h3 class="member-name">Francoise</h3>
+                    <p class="member-role">Social Events Coordinator</p>
+                    <div class="member-responsibilities">
+                        <ul>
+                            <li>Planning social gatherings</li>
+                            <li>Team building activities</li>
+                            <li>Fellowship event organization</li>
+                            <li>Community outreach programs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; padding: 3rem 0; background: #f8f6f3; border-radius: 10px;">
+            <h3 style="font-size: 2rem; color: var(--primary); margin-bottom: 1rem;">Serving Together in Ministry</h3>
+            <p style="font-size: 1.1rem; color: #555; max-width: 800px; margin: 0 auto;">
+                Our Executive Committee brings together dedicated servants who guide every aspect of JYANUMUCYO Choir's life — from musical direction and spiritual formation to administration, technical support, and member care. Together they ensure our ministry continues to grow in excellence and faithfulness.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+     <!-- Footer -->
+    <footer>
+        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">JYANUMUCYO</h2>
+        <p>EAR Diocese Butare</p>
+        <p>&copy; 2026 JYANUMUCYO Choir. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=61564339781863" target="_blank" title="Facebook">📘</a>
+            <a href="https://twitter.com/JyanumucyoChoir" target="_blank" title="Twitter/X">🐦</a>
+            <a href="mailto:jyanumucyochoir@gmail.com" title="Email">✉️</a>
+             <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
+        </div>
+    </footer>
+</body>
+</html>
