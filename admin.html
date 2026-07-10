@@ -108,6 +108,20 @@
             transition: background 0.3s;
         }
         .logout-btn:hover { background: #c0392b; }
+        .back-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .back-btn:hover { background: var(--gold); }
 
         .dashboard {
             max-width: 1400px;
@@ -333,7 +347,10 @@
             <h1>JYANUMUCYO — Applications</h1>
             <span>Singer Application Management</span>
         </div>
-        <button class="logout-btn" onclick="logout()">Logout</button>
+        <div style="display:flex; gap:0.75rem; align-items:center;">
+            <a href="index.html" class="back-btn">← Back to Site</a>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
     </header>
 
     <div class="dashboard">
