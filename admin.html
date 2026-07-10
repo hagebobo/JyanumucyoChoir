@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Applications | JYANUMUCYO Choir</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d2e;
+            --secondary: #c8a882;
+            --accent: #8b4513;
+            --dark: #0f1419;
+            --light: #f8f6f3;
+            --gold: #d4af37;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: #f0f2f5; color: var(--dark); min-height: 100vh; }
+
+        /* ── Login Screen ── */
+        #loginScreen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        }
+        .login-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .login-box h1 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .login-box p { color: #777; margin-bottom: 2rem; font-size: 0.95rem; }
+        .login-box input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s;
+        }
+        .login-box input:focus { outline: none; border-color: var(--gold); }
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .login-btn:hover { background: var(--gold); }
+        .login-error {
+            color: #721c24;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            padding: 0.75rem 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            display: none;
+            font-size: 0.9rem;
+        }
+
+        /* ── Admin Dashboard ── */
+        #adminScreen { display: none; }
+
+        header {
+            background: var(--dark);
+            color: white;
+            padding: 1.2rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        header h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+        }
+        header span { font-size: 0.85rem; color: #aaa; }
+        .logout-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+        .logout-btn:hover { background: #c0392b; }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Stats bar */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--gold);
+        }
+        .stat-card .num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        .stat-card .lbl { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #777; margin-top: 0.3rem; }
+
+        /* Controls */
+        .controls {
+            background: white;
+            padding: 1.2rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+        .controls input[type="text"] {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.7rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+        .controls input:focus { outline: none; border-color: var(--gold); }
+        .controls select {
+            padding: 0.7rem 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            background: white;
+            cursor: pointer;
+        }
+        .refresh-btn {
+            padding: 0.7rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .refresh-btn:hover { background: var(--gold); }
+
+        /* Table */
+        .table-wrapper {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        thead { background: var(--primary); color: white; }
+        thead th {
+            padding: 1rem 1.2rem;
+            text-align: left;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        tbody tr { border-bottom: 1px solid #f0f0f0; transition: background 0.2s; }
+        tbody tr:hover { background: #fafaf8; }
+        tbody td { padding: 1rem 1.2rem; font-size: 0.9rem; vertical-align: top; }
+        tbody td.name { font-weight: 600; color: var(--primary); }
+        tbody td.truncate { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; cursor: pointer; }
+        tbody td.truncate:hover { white-space: normal; }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-pending  { background: #fff3cd; color: #856404; }
+        .badge-reviewed { background: #cff4fc; color: #055160; }
+        .badge-accepted { background: #d1e7dd; color: #0a3622; }
+        .badge-rejected { background: #f8d7da; color: #58151c; }
+
+        .voice-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #e8f4ea;
+            color: var(--primary);
+            text-transform: capitalize;
+        }
+
+        .status-select {
+            padding: 0.3rem 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            background: white;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 4rem;
+            color: #777;
+            font-size: 1.1rem;
+        }
+        .no-data {
+            text-align: center;
+            padding: 4rem;
+            color: #aaa;
+        }
+        .no-data p { font-size: 1.1rem; margin-top: 1rem; }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        .modal h2 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem; right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #aaa;
+            background: none;
+            border: none;
+            line-height: 1;
+        }
+        .modal-close:hover { color: var(--dark); }
+        .modal-field { margin-bottom: 1.2rem; }
+        .modal-field strong {
+            display: block;
+            color: var(--primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+        .modal-field span { color: #444; line-height: 1.6; }
+
+        @media (max-width: 768px) {
+            header { flex-wrap: wrap; gap: 0.5rem; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── LOGIN SCREEN ── -->
+<div id="loginScreen">
+    <div class="login-box">
+        <h1>JYANUMUCYO</h1>
+        <p>Admin Portal — Singer Applications</p>
+        <input type="password" id="passwordInput" placeholder="Enter admin password" />
+        <button class="login-btn" onclick="checkPassword()">Login</button>
+        <div class="login-error" id="loginError">Incorrect password. Please try again.</div>
+    </div>
+</div>
+
+<!-- ── ADMIN DASHBOARD ── -->
+<div id="adminScreen">
+    <header>
+        <div>
+            <h1>JYANUMUCYO — Applications</h1>
+            <span>Singer Application Management</span>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <div class="dashboard">
+        <!-- Stats -->
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="num" id="statTotal">—</div>
+                <div class="lbl">Total</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" id="statPending">—</div>
+                <div class="lbl">Pending</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" id="statReviewed">—</div>
+                <div class="lbl">Reviewed</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" id="statAccepted">—</div>
+                <div class="lbl">Accepted</div>
+            </div>
+            <div class="stat-card">
+                <div class="num" id="statRejected">—</div>
+                <div class="lbl">Rejected</div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="🔍  Search by name, email or phone..." oninput="filterTable()" />
+            <select id="filterStatus" onchange="filterTable()">
+                <option value="">All Statuses</option>
+                <option value="pending">Pending</option>
+                <option value="reviewed">Reviewed</option>
+                <option value="accepted">Accepted</option>
+                <option value="rejected">Rejected</option>
+            </select>
+            <select id="filterVoice" onchange="filterTable()">
+                <option value="">All Voice Parts</option>
+                <option value="soprano">Soprano</option>
+                <option value="alto">Alto</option>
+                <option value="tenor">Tenor</option>
+                <option value="bass">Bass</option>
+                <option value="unsure">Not Sure</option>
+            </select>
+            <button class="refresh-btn" onclick="loadApplications()">↻ Refresh</button>
+        </div>
+
+        <!-- Table -->
+        <div class="table-wrapper">
+            <div class="loading" id="loadingMsg">Loading applications...</div>
+            <table id="applicationsTable" style="display:none;">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Age</th>
+                        <th>Voice Part</th>
+                        <th>Experience</th>
+                        <th>Status</th>
+                        <th>Applied On</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+            <div class="no-data" id="noDataMsg" style="display:none;">
+                <p>📭 No applications found.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── DETAIL MODAL ── -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal">
+        <button class="modal-close" onclick="closeModalBtn()">✕</button>
+        <h2 id="modalName"></h2>
+        <div class="modal-field"><strong>Email</strong><span id="modalEmail"></span></div>
+        <div class="modal-field"><strong>Phone</strong><span id="modalPhone"></span></div>
+        <div class="modal-field"><strong>Age</strong><span id="modalAge"></span></div>
+        <div class="modal-field"><strong>Voice Part</strong><span id="modalVoice"></span></div>
+        <div class="modal-field"><strong>Musical Experience</strong><span id="modalExperience"></span></div>
+        <div class="modal-field"><strong>Motivation</strong><span id="modalMotivation"></span></div>
+        <div class="modal-field"><strong>Status</strong><span id="modalStatus"></span></div>
+        <div class="modal-field"><strong>Applied On</strong><span id="modalDate"></span></div>
+    </div>
+</div>
+
+<script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+    const SUPABASE_URL = 'https://glaknamdycwwufwhbbpz.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsYWtuYW1keWN3d3Vmd2hiYnB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2ODc0NzAsImV4cCI6MjA5OTI2MzQ3MH0.CUPy9gr7nOMtKtcdLWdma_hAfH0wrkDXwmwcXwr-jH8';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    // ── Password (change this to something private) ──
+    const ADMIN_PASSWORD = 'Jyanu2025!';
+
+    let allApplications = [];
+
+    // Expose functions to window so inline onclick handlers work
+    window.checkPassword = function() {
+        const input = document.getElementById('passwordInput').value;
+        if (input === ADMIN_PASSWORD) {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('adminScreen').style.display = 'block';
+            loadApplications();
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+        }
+    };
+
+    // Allow Enter key on password field
+    document.getElementById('passwordInput').addEventListener('keydown', e => {
+        if (e.key === 'Enter') window.checkPassword();
+    });
+
+    window.logout = function() {
+        document.getElementById('loginScreen').style.display = 'flex';
+        document.getElementById('adminScreen').style.display = 'none';
+        document.getElementById('passwordInput').value = '';
+        document.getElementById('loginError').style.display = 'none';
+        allApplications = [];
+    };
+
+    window.loadApplications = async function() {
+        document.getElementById('loadingMsg').style.display = 'block';
+        document.getElementById('applicationsTable').style.display = 'none';
+        document.getElementById('noDataMsg').style.display = 'none';
+
+        const { data, error } = await supabase
+            .from('applications')
+            .select('*')
+            .order('created_at', { ascending: false });
+
+        document.getElementById('loadingMsg').style.display = 'none';
+
+        if (error) {
+            document.getElementById('loadingMsg').textContent = '❌ Failed to load: ' + error.message;
+            document.getElementById('loadingMsg').style.display = 'block';
+            return;
+        }
+
+        allApplications = data || [];
+        updateStats(allApplications);
+        renderTable(allApplications);
+    };
+
+    function updateStats(data) {
+        document.getElementById('statTotal').textContent    = data.length;
+        document.getElementById('statPending').textContent  = data.filter(r => r.status === 'pending').length;
+        document.getElementById('statReviewed').textContent = data.filter(r => r.status === 'reviewed').length;
+        document.getElementById('statAccepted').textContent = data.filter(r => r.status === 'accepted').length;
+        document.getElementById('statRejected').textContent = data.filter(r => r.status === 'rejected').length;
+    }
+
+    function renderTable(data) {
+        const tbody = document.getElementById('tableBody');
+        tbody.innerHTML = '';
+
+        if (data.length === 0) {
+            document.getElementById('noDataMsg').style.display = 'block';
+            document.getElementById('applicationsTable').style.display = 'none';
+            return;
+        }
+
+        document.getElementById('applicationsTable').style.display = 'table';
+        document.getElementById('noDataMsg').style.display = 'none';
+
+        data.forEach((app, index) => {
+            const date = new Date(app.created_at).toLocaleDateString('en-GB', {
+                day: '2-digit', month: 'short', year: 'numeric'
+            });
+
+            const statusColors = {
+                pending: 'badge-pending',
+                reviewed: 'badge-reviewed',
+                accepted: 'badge-accepted',
+                rejected: 'badge-rejected'
+            };
+            const badgeClass = statusColors[app.status] || 'badge-pending';
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td class="name">${escHtml(app.full_name)}</td>
+                <td><a href="mailto:${escHtml(app.email)}" style="color:var(--accent)">${escHtml(app.email)}</a></td>
+                <td><a href="tel:${escHtml(app.phone)}" style="color:var(--accent)">${escHtml(app.phone)}</a></td>
+                <td>${app.age ?? '—'}</td>
+                <td><span class="voice-badge">${escHtml(app.voice_part ?? '—')}</span></td>
+                <td class="truncate" title="${escHtml(app.experience ?? '')}">${escHtml(app.experience ?? '—')}</td>
+                <td>
+                    <select class="status-select" data-id="${app.id}" onchange="updateStatus(this)">
+                        <option value="pending"  ${app.status==='pending'  ? 'selected':''}>Pending</option>
+                        <option value="reviewed" ${app.status==='reviewed' ? 'selected':''}>Reviewed</option>
+                        <option value="accepted" ${app.status==='accepted' ? 'selected':''}>Accepted</option>
+                        <option value="rejected" ${app.status==='rejected' ? 'selected':''}>Rejected</option>
+                    </select>
+                </td>
+                <td>${date}</td>
+                <td><button onclick='openModal(${JSON.stringify(app)})' style="background:var(--primary);color:white;border:none;padding:0.4rem 0.8rem;border-radius:4px;cursor:pointer;font-size:0.8rem;">View</button></td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    window.filterTable = function() {
+        const search = document.getElementById('searchInput').value.toLowerCase();
+        const status = document.getElementById('filterStatus').value;
+        const voice  = document.getElementById('filterVoice').value;
+
+        const filtered = allApplications.filter(app => {
+            const matchSearch = !search ||
+                (app.full_name && app.full_name.toLowerCase().includes(search)) ||
+                (app.email     && app.email.toLowerCase().includes(search)) ||
+                (app.phone     && app.phone.toLowerCase().includes(search));
+            const matchStatus = !status || app.status === status;
+            const matchVoice  = !voice  || app.voice_part === voice;
+            return matchSearch && matchStatus && matchVoice;
+        });
+
+        renderTable(filtered);
+    };
+
+    window.updateStatus = async function(selectEl) {
+        const id        = selectEl.getAttribute('data-id');
+        const newStatus = selectEl.value;
+
+        const { error } = await supabase
+            .from('applications')
+            .update({ status: newStatus })
+            .eq('id', id);
+
+        if (error) {
+            alert('Failed to update status: ' + error.message);
+            return;
+        }
+
+        // Update local cache
+        const rec = allApplications.find(a => String(a.id) === String(id));
+        if (rec) rec.status = newStatus;
+        updateStats(allApplications);
+    };
+
+    window.openModal = function(app) {
+        document.getElementById('modalName').textContent       = app.full_name;
+        document.getElementById('modalEmail').textContent      = app.email;
+        document.getElementById('modalPhone').textContent      = app.phone;
+        document.getElementById('modalAge').textContent        = app.age ?? '—';
+        document.getElementById('modalVoice').textContent      = app.voice_part ?? '—';
+        document.getElementById('modalExperience').textContent = app.experience ?? '—';
+        document.getElementById('modalMotivation').textContent = app.motivation ?? '—';
+        document.getElementById('modalStatus').textContent     = app.status;
+        document.getElementById('modalDate').textContent       = new Date(app.created_at).toLocaleString('en-GB');
+        document.getElementById('modalOverlay').classList.add('active');
+    };
+
+    window.closeModal = function(e) {
+        if (e.target === document.getElementById('modalOverlay')) {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+    };
+
+    window.closeModalBtn = function() {
+        document.getElementById('modalOverlay').classList.remove('active');
+    };
+
+    function escHtml(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+    }
+</script>
+</body>
+</html>

@@ -163,12 +163,13 @@
         </div>
     </footer>
     <!-- Supabase SDK -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
         const SUPABASE_URL = 'https://glaknamdycwwufwhbbpz.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsYWtuYW1keWN3d3Vmd2hiYnB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2ODc0NzAsImV4cCI6MjA5OTI2MzQ3MH0.CUPy9gr7nOMtKtcdLWdma_hAfH0wrkDXwmwcXwr-jH8';
 
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         document.getElementById('applicationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -177,11 +178,9 @@
             const successMsg = document.getElementById('successMsg');
             const errorMsg = document.getElementById('errorMsg');
 
-            // Hide previous messages
             successMsg.style.display = 'none';
             errorMsg.style.display = 'none';
 
-            // Disable button while submitting
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
 
@@ -203,7 +202,8 @@
                 .insert([applicationData]);
 
             if (error) {
-                console.error('Submission error:', error);
+                console.error('Submission error:', error.message);
+                errorMsg.textContent = '❌ Error: ' + error.message + '. Please try again or email us at jyanumucyochoir@gmail.com.';
                 errorMsg.style.display = 'block';
                 errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 submitBtn.disabled = false;
