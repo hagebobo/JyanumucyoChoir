@@ -108,20 +108,44 @@
             transition: background 0.3s;
         }
         .logout-btn:hover { background: #c0392b; }
-        .back-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
+
+        /* Toggle button */
+        .toggle-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
             padding: 0.5rem 1.2rem;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.85rem;
-            text-decoration: none;
-            display: inline-block;
-            transition: background 0.3s;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s;
         }
-        .back-btn:hover { background: var(--gold); }
+        .toggle-btn.enabled {
+            background: #198754;
+            color: white;
+        }
+        .toggle-btn.enabled:hover { background: #146c43; }
+        .toggle-btn.disabled-state {
+            background: #dc3545;
+            color: white;
+        }
+        .toggle-btn.disabled-state:hover { background: #b02a37; }
+        .toggle-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: white;
+            display: inline-block;
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
 
         .dashboard {
             max-width: 1400px;
@@ -337,7 +361,6 @@
         <input type="password" id="passwordInput" placeholder="Enter admin password" />
         <button class="login-btn" onclick="checkPassword()">Login</button>
         <div class="login-error" id="loginError">Incorrect password. Please try again.</div>
-        <a href="index.html" style="display:block; margin-top:1.2rem; color:var(--primary); font-size:0.9rem; text-decoration:none; font-weight:600; transition:color 0.3s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--primary)'">← Back to Website</a>
     </div>
 </div>
 
@@ -349,7 +372,10 @@
             <span>Singer Application Management</span>
         </div>
         <div style="display:flex; gap:0.75rem; align-items:center;">
-            <a href="index.html" class="back-btn">← Back to Site</a>
+            <button class="toggle-btn enabled" id="toggleBtn" onclick="toggleApplications()">
+                <span class="toggle-dot"></span>
+                <span id="toggleLabel">Applications Open</span>
+            </button>
             <button class="logout-btn" onclick="logout()">Logout</button>
         </div>
     </header>
@@ -450,24 +476,23 @@
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsYWtuYW1keWN3d3Vmd2hiYnB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2ODc0NzAsImV4cCI6MjA5OTI2MzQ3MH0.CUPy9gr7nOMtKtcdLWdma_hAfH0wrkDXwmwcXwr-jH8';
     const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-    // ── Password (change this to something private) ──
     const ADMIN_PASSWORD = 'Jyanu2025!';
-
     let allApplications = [];
+    let applicationsOpen = true; // current state
 
-    // Expose functions to window so inline onclick handlers work
+    // ── AUTH ──────────────────────────────────────────────
     window.checkPassword = function() {
         const input = document.getElementById('passwordInput').value;
         if (input === ADMIN_PASSWORD) {
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('adminScreen').style.display = 'block';
             loadApplications();
+            loadToggleState();
         } else {
             document.getElementById('loginError').style.display = 'block';
         }
     };
 
-    // Allow Enter key on password field
     document.getElementById('passwordInput').addEventListener('keydown', e => {
         if (e.key === 'Enter') window.checkPassword();
     });
@@ -480,6 +505,62 @@
         allApplications = [];
     };
 
+    // ── TOGGLE APPLICATIONS ON/OFF ─────────────────────────
+    async function loadToggleState() {
+        const { data, error } = await supabase
+            .from('site_settings')
+            .select('value')
+            .eq('key', 'applications_open')
+            .single();
+
+        if (!error && data) {
+            applicationsOpen = data.value === 'true';
+        } else {
+            applicationsOpen = true; // default open if not set
+        }
+        updateToggleUI();
+    }
+
+    function updateToggleUI() {
+        const btn   = document.getElementById('toggleBtn');
+        const label = document.getElementById('toggleLabel');
+        if (applicationsOpen) {
+            btn.className   = 'toggle-btn enabled';
+            label.textContent = 'Applications Open';
+        } else {
+            btn.className   = 'toggle-btn disabled-state';
+            label.textContent = 'Applications Closed';
+        }
+    }
+
+    window.toggleApplications = async function() {
+        const btn = document.getElementById('toggleBtn');
+        btn.disabled = true;
+
+        const newValue = !applicationsOpen;
+        const action   = newValue ? 'OPEN' : 'CLOSE';
+        const confirm  = window.confirm(
+            newValue
+                ? 'Enable applications? The Join Us form will become visible to everyone.'
+                : 'Disable applications? The Join Us form will be hidden from the public.'
+        );
+
+        if (!confirm) { btn.disabled = false; return; }
+
+        const { error } = await supabase
+            .from('site_settings')
+            .upsert({ key: 'applications_open', value: String(newValue) }, { onConflict: 'key' });
+
+        if (error) {
+            alert('Failed to update setting: ' + error.message);
+        } else {
+            applicationsOpen = newValue;
+            updateToggleUI();
+        }
+        btn.disabled = false;
+    };
+
+    // ── APPLICATIONS TABLE ─────────────────────────────────
     window.loadApplications = async function() {
         document.getElementById('loadingMsg').style.display = 'block';
         document.getElementById('applicationsTable').style.display = 'none';
@@ -528,15 +609,6 @@
             const date = new Date(app.created_at).toLocaleDateString('en-GB', {
                 day: '2-digit', month: 'short', year: 'numeric'
             });
-
-            const statusColors = {
-                pending: 'badge-pending',
-                reviewed: 'badge-reviewed',
-                accepted: 'badge-accepted',
-                rejected: 'badge-rejected'
-            };
-            const badgeClass = statusColors[app.status] || 'badge-pending';
-
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${index + 1}</td>
@@ -565,7 +637,6 @@
         const search = document.getElementById('searchInput').value.toLowerCase();
         const status = document.getElementById('filterStatus').value;
         const voice  = document.getElementById('filterVoice').value;
-
         const filtered = allApplications.filter(app => {
             const matchSearch = !search ||
                 (app.full_name && app.full_name.toLowerCase().includes(search)) ||
@@ -575,25 +646,17 @@
             const matchVoice  = !voice  || app.voice_part === voice;
             return matchSearch && matchStatus && matchVoice;
         });
-
         renderTable(filtered);
     };
 
     window.updateStatus = async function(selectEl) {
         const id        = selectEl.getAttribute('data-id');
         const newStatus = selectEl.value;
-
         const { error } = await supabase
             .from('applications')
             .update({ status: newStatus })
             .eq('id', id);
-
-        if (error) {
-            alert('Failed to update status: ' + error.message);
-            return;
-        }
-
-        // Update local cache
+        if (error) { alert('Failed to update status: ' + error.message); return; }
         const rec = allApplications.find(a => String(a.id) === String(id));
         if (rec) rec.status = newStatus;
         updateStats(allApplications);
@@ -613,9 +676,8 @@
     };
 
     window.closeModal = function(e) {
-        if (e.target === document.getElementById('modalOverlay')) {
+        if (e.target === document.getElementById('modalOverlay'))
             document.getElementById('modalOverlay').classList.remove('active');
-        }
     };
 
     window.closeModalBtn = function() {
