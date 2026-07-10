@@ -607,9 +607,6 @@
         document.getElementById('noDataMsg').style.display = 'none';
 
         data.forEach((app, index) => {
-            const date = new Date(app.created_at).toLocaleDateString('en-GB', {
-                day: '2-digit', month: 'short', year: 'numeric'
-            });
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${index + 1}</td>
@@ -627,7 +624,7 @@
                         <option value="rejected" ${app.status==='rejected' ? 'selected':''}>Rejected</option>
                     </select>
                 </td>
-                <td>${date}</td>
+                <td>${formatDate(app.created_at)}</td>
                 <td><button onclick='openModal(${JSON.stringify(app)})' style="background:var(--primary);color:white;border:none;padding:0.4rem 0.8rem;border-radius:4px;cursor:pointer;font-size:0.8rem;">View</button></td>
             `;
             tbody.appendChild(row);
@@ -672,7 +669,7 @@
         document.getElementById('modalExperience').textContent = app.experience ?? '—';
         document.getElementById('modalMotivation').textContent = app.motivation ?? '—';
         document.getElementById('modalStatus').textContent     = app.status;
-        document.getElementById('modalDate').textContent       = new Date(app.created_at).toLocaleString('en-GB');
+        document.getElementById('modalDate').textContent = formatDateTime(app.created_at);
         document.getElementById('modalOverlay').classList.add('active');
     };
 
@@ -685,7 +682,20 @@
         document.getElementById('modalOverlay').classList.remove('active');
     };
 
-    function escHtml(str) {
+    function formatDate(dateStr) {
+        if (!dateStr) return '—';
+        const d = new Date(dateStr);
+        // Check for invalid or epoch date
+        if (isNaN(d.getTime()) || d.getFullYear() === 1970) return 'Unknown';
+        return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    }
+
+    function formatDateTime(dateStr) {
+        if (!dateStr) return '—';
+        const d = new Date(dateStr);
+        if (isNaN(d.getTime()) || d.getFullYear() === 1970) return 'Unknown';
+        return d.toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
         if (!str) return '';
         return String(str)
             .replace(/&/g, '&amp;')
