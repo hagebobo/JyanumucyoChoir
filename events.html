@@ -3,40 +3,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events - JYANUMUCYO Choir</title>
+    <title>Pastors - JYANUMUCYO Choir</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {--primary: #1a4d2e; --secondary: #c8a882; --accent: #8b4513; --dark: #0f1419; --light: #f8f6f3; --gold: #d4af37;}
-        * {margin: 0; padding: 0; box-sizing: border-box;}
-        body {font-family: 'Montserrat', sans-serif; color: var(--dark); line-height: 1.6; padding-top: 80px;}
-        h1, h2, h3 {font-family: 'Cormorant Garamond', serif; font-weight: 700;}
-        nav {position: fixed; width: 100%; top: 0; background: rgba(15, 20, 25, 0.95); backdrop-filter: blur(10px); z-index: 1000; padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1);}
-        nav ul {list-style: none; display: flex; justify-content: center; flex-wrap: wrap; gap: 2rem; padding: 0 2rem;}
-        nav a {color: var(--light); text-decoration: none; font-weight: 500; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease; position: relative;}
-        nav a::after {content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--gold); transition: width 0.3s ease;}
-        nav a:hover::after, nav a.active::after {width: 100%;}
-        .page-header {background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); color: white; padding: 4rem 2rem 3rem; text-align: center;}
-        .page-header h1 {font-size: 3.5rem; margin-bottom: 1rem;}
-        .content-section {padding: 5rem 2rem; max-width: 1200px; margin: 0 auto;}
-        .events-list {display: grid; gap: 2rem;}
-        .event-item {background: white; padding: 2.5rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); border-left: 5px solid var(--gold); transition: transform 0.3s ease;}
-        .event-item:hover {transform: translateX(10px);}
-        .event-date {color: var(--gold); font-weight: 700; font-size: 1.2rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 1px;}
-        .event-title {color: var(--primary); font-size: 2rem; margin-bottom: 1rem;}
-        .event-description {color: #555; line-height: 1.8; font-size: 1.1rem;}
-        footer {background: var(--dark); color: var(--light); text-align: center; padding: 3rem 2rem;}
-        footer h2 {color: var(--gold);}
-        .social-links {margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem;}
-        .social-links a {color: var(--light); font-size: 1.5rem; transition: transform 0.3s ease;}
-        .social-links a:hover {transform: scale(1.2); color: var(--gold);}
+        :root {
+            --primary: #1a4d2e;
+            --secondary: #c8a882;
+            --accent: #8b4513;
+            --dark: #0f1419;
+            --light: #f8f6f3;
+            --gold: #d4af37;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 80px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(15, 20, 25, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after, nav a.active::after { width: 100%; }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 4rem 2rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: '✝';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.05;
+            top: -5rem;
+            right: 5%;
+            font-family: serif;
+        }
+
+        .page-header h1 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .page-header p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; opacity: 0.9; }
+
+        /* Intro Banner */
+        .intro-banner {
+            background: linear-gradient(135deg, #f8f6f3 0%, #fff 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .intro-banner h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-banner p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 850px;
+            margin: 0 auto;
+            line-height: 1.9;
+        }
+
+        .intro-banner .highlight {
+            display: inline-block;
+            background: var(--gold);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Pastors Grid */
+        .pastors-section {
+            padding: 5rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #888;
+            margin-bottom: 4rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .pastors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .pastor-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212,175,55,0.15);
+        }
+
+        .pastor-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 50px rgba(26,77,46,0.15);
+            border-color: var(--gold);
+        }
+
+        .pastor-photo {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pastor-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .pastor-card:hover .pastor-photo img {
+            transform: scale(1.05);
+        }
+
+        .pastor-photo-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            color: rgba(255,255,255,0.6);
+            gap: 1rem;
+        }
+
+        .pastor-photo-placeholder .cross-icon {
+            font-size: 4rem;
+            opacity: 0.7;
+        }
+
+        .pastor-photo-placeholder p {
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .pastor-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gold);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+        }
+
+        .pastor-info {
+            padding: 1.8rem;
+        }
+
+        .pastor-name {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .pastor-title {
+            color: var(--gold);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pastor-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            margin-bottom: 0.6rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .pastor-detail .icon {
+            min-width: 18px;
+            color: var(--gold);
+            font-size: 0.95rem;
+        }
+
+        /* Legacy Quote Section */
+        .legacy-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #0d3320 100%);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            margin: 3rem 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .legacy-section::before {
+            content: '✝';
+            position: absolute;
+            font-size: 30rem;
+            opacity: 0.04;
+            bottom: -8rem;
+            left: -4rem;
+            font-family: serif;
+        }
+
+        .legacy-section h2 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .legacy-section blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+            font-family: 'Cormorant Garamond', serif;
+            opacity: 0.9;
+        }
+
+        .legacy-section p {
+            font-size: 1rem;
+            opacity: 0.75;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-box .number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            display: block;
+        }
+
+        .stat-box .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.75;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        footer h2 { color: var(--gold); }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+            color: var(--gold);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
-            .page-header h1 {font-size: 2.5rem;}
-            nav ul {gap: 1rem;}
-            nav a {font-size: 0.8rem;}
+            .page-header h1 { font-size: 2.5rem; }
+            .pastors-grid { grid-template-columns: 1fr; }
+            .stats-row { gap: 2rem; }
+            nav ul { gap: 1rem; }
+            nav a { font-size: 0.75rem; }
+            .legacy-section h2 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
+
+    <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -44,47 +397,375 @@
             <li><a href="mission.html">Mission</a></li>
             <li><a href="history.html">History</a></li>
             <li><a href="leadership.html">Leadership</a></li>
-            <li><a href="pastors.html">Pastors</a></li>
+            <li><a href="pastors.html" class="active">Pastors</a></li>
             <li><a href="members.html">Members</a></li>
             <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="events.html" class="active">Events</a></li>
+            <li><a href="events.html">Events</a></li>
             <li><a href="contact.html">Contact</a></li>
             <li><a href="join.html">Join Us</a></li>
+            <li><a href="admin.html">Admin</a></li>
         </ul>
     </nav>
+
+    <!-- Page Header -->
     <div class="page-header">
-        <h1>Upcoming Events</h1>
-        <p>Join Us in Worship and Celebration</p>
+        <h1>Our Pastors</h1>
+        <p>Ordained ministers who were raised and formed through JYANUMUCYO Choir — a living testimony of our spiritual mission</p>
     </div>
-    <section class="content-section">
-        <div class="events-list">
-            <div class="event-item">
-                <div class="event-date">March 15, 2026</div>
-                <h3 class="event-title">Easter Celebration Concert</h3>
-                <p class="event-description">Join us for a special Easter celebration featuring traditional hymns and contemporary worship songs. The event will be held at the Cathedral starting at 6:00 PM.</p>
+
+    <!-- Intro Banner -->
+    <div class="intro-banner">
+        <h2>From Choir to Pulpit</h2>
+        <p>One of the greatest honours of JYANUMUCYO Choir is not only the music we sing, but the lives we shape. Since our founding in 1995, the Holy Spirit has called many of our members into full pastoral ministry. Today we celebrate</p>
+        <div class="highlight">13 Ordained Pastors</div>
+        <p>who were nurtured, discipled, and spiritually formed within our choir family — now serving God's people across Rwanda and beyond.</p>
+    </div>
+
+    <!-- Pastors Section -->
+    <section class="pastors-section">
+        <h2 class="section-title">Sons &amp; Daughters of the Choir</h2>
+        <p class="section-subtitle">Pastors raised through JYANUMUCYO ministry</p>
+
+        <div class="pastors-grid">
+
+            <!-- Pastor 1: Rev. NKEZABERA Samuel -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <img src="Sam.jpg" alt="Rev. NKEZABERA Samuel">
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. NKEZABERA Samuel</h3>
+                    <p class="pastor-title">Youth Pastor &amp; Manager</p>
+                    <div class="pastor-detail">
+                        <span class="icon">⛪</span>
+                        <span>EAR St Paul Cathedral</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🙏</span>
+                        <span>Youth Pastor</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">☕</span>
+                        <span>Manager of Nehemiah Coffee Shop</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🎵</span>
+                        <span>Formed through JYANUMUCYO Choir</span>
+                    </div>
+                </div>
             </div>
-            <div class="event-item">
-                <div class="event-date">April 20, 2026</div>
-                <h3 class="event-title">NNCA Regional Festival</h3>
-                <p class="event-description">JYANUMUCYO will be performing at the Regional NNCA Festival, showcasing our finest pieces alongside other talented choirs from across the region.</p>
+
+            <!-- Pastor 2: Ven. SABANIRO Edmond -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <img src="Sabaniro_Edmond.jpeg" alt="Ven. SABANIRO Edmond">
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Ven. SABANIRO Edmond</h3>
+                    <p class="pastor-title">Archdeacon</p>
+                    <div class="pastor-detail">
+                        <span class="icon">⛪</span>
+                        <span>Archdeaconry of MUTUNDA</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">✝</span>
+                        <span>Archdeacon of MUTUNDA Archdeaconry</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🙏</span>
+                        <span>Serving in active pastoral leadership</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🎵</span>
+                        <span>Formed through JYANUMUCYO Choir</span>
+                    </div>
+                </div>
             </div>
-            <div class="event-item">
-                <div class="event-date">May 10, 2026</div>
-                <h3 class="event-title">Community Outreach Performance</h3>
-                <p class="event-description">A special performance at the Community Center aimed at spreading hope and inspiration through music. Free admission, all are welcome.</p>
+
+            <!-- Pastor 3: Rev. Phenias -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <img src="Phenias_new.jpeg" alt="Rev. Phenias">
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev.NIZIGIYUMUKIZA Phenias</h3>
+                    <p class="pastor-title">Parish Pastor</p>
+                    <div class="pastor-detail">
+                        <span class="icon">⛪</span>
+                        <span>GISANZE Parish</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">✝</span>
+                        <span>Pastor of GISANZE Parish</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🙏</span>
+                        <span>Serving in active pastoral ministry</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🎵</span>
+                        <span>Formed through JYANUMUCYO Choir</span>
+                    </div>
+                </div>
             </div>
-            <div class="event-item">
-                <div class="event-date">Weekly Practice</div>
-                <h3 class="event-title">Choir Rehearsals</h3>
-                <p class="event-description">Every Wednesday and Friday from 17:15 PM to 19:30 PM. All members are expected to attend. New members are welcome to observe and join!</p>
+
+            <!-- Pastor 4: Rev. NIYIGABA Flix -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <img src="Lambert_new.jpeg" alt="Rev. NIYIGABA Flix">
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. NIYIGABA Flix</h3>
+                    <p class="pastor-title">Parish Pastor</p>
+                    <div class="pastor-detail">
+                        <span class="icon">⛪</span>
+                        <span>KINKANGA Parish</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">✝</span>
+                        <span>Pastor of KINKANGA Parish</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🙏</span>
+                        <span>Serving in active pastoral ministry</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🎵</span>
+                        <span>Formed through JYANUMUCYO Choir</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div style="margin-top: 4rem; text-align: center; padding: 3rem; background: linear-gradient(135deg, var(--primary) 0.1%, var(--accent) 10%); border-radius: 10px; color: white;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Want to Attend Our Events?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Stay updated with our latest performances and events. Contact us for more information or follow us on social media.</p>
-            <a href="contact.html" style="display: inline-block; padding: 1rem 2rem; background: var(--gold); color: white; text-decoration: none; border-radius: 5px; font-weight: 600; text-transform: uppercase;">Contact Us</a>
+
+            <!-- Pastor 5: Rev. KAMUYUMBU Claudine -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <img src="Claudine.png" alt="Rev. KAMUYUMBU Claudine">
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. KAMUYUMBU Claudine</h3>
+                    <p class="pastor-title">Sunday School Pastor</p>
+                    <div class="pastor-detail">
+                        <span class="icon">⛪</span>
+                        <span>EAR St Paul Cathedral</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">✝</span>
+                        <span>Pastor of Sunday School</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🙏</span>
+                        <span>Nurturing the next generation in faith</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🎵</span>
+                        <span>Formed through JYANUMUCYO Choir</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pastor 6: Deacon MWIZERWA Jerome -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <img src="Jerome.png" alt="Deacon MWIZERWA Jerome">
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Deacon MWIZERWA Jerome</h3>
+                    <p class="pastor-title">Chaplain</p>
+                    <div class="pastor-detail">
+                        <span class="icon">⛪</span>
+                        <span>EAR St Paul Cathedral</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">✝</span>
+                        <span>Chaplain of All RASA</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🙏</span>
+                        <span>Serving in chaplaincy ministry</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🎵</span>
+                        <span>Formed through JYANUMUCYO Choir</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pastor 7: Rev. NGENDAHAYO Lambert -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <img src="Lambert_photo.jpeg" alt="Rev. NGENDAHAYO Lambert">
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. NGENDAHAYO Lambert</h3>
+                    <p class="pastor-title">Parish Pastor</p>
+                    <div class="pastor-detail">
+                        <span class="icon">⛪</span>
+                        <span>MUBUMBANO Parish</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">✝</span>
+                        <span>Pastor of MUBUMBANO Parish</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🙏</span>
+                        <span>Serving in active pastoral ministry</span>
+                    </div>
+                    <div class="pastor-detail">
+                        <span class="icon">🎵</span>
+                        <span>Formed through JYANUMUCYO Choir</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pastor 8: Rev. Mukawera Claudine -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <div class="pastor-photo-placeholder">
+                        <span class="cross-icon">✝</span>
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. Mukawera Claudine</h3>
+                    <p class="pastor-title">Ordained Pastor</p>
+                    <div class="pastor-detail"><span class="icon">🎵</span><span>Former JYANUMUCYO choir member</span></div>
+                    <div class="pastor-detail"><span class="icon">✝</span><span>Ordained into pastoral ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">🙏</span><span>Currently serving in active ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">⭐</span><span>Spiritual formation through choir</span></div>
+                </div>
+            </div>
+
+            <!-- Pastor 9: Rev. Joseph -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <div class="pastor-photo-placeholder">
+                        <span class="cross-icon">✝</span>
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. Joseph</h3>
+                    <p class="pastor-title">Ordained Pastor</p>
+                    <div class="pastor-detail"><span class="icon">🎵</span><span>Former JYANUMUCYO choir member</span></div>
+                    <div class="pastor-detail"><span class="icon">✝</span><span>Ordained into pastoral ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">🙏</span><span>Currently serving in active ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">⭐</span><span>Spiritual formation through choir</span></div>
+                </div>
+            </div>
+
+            <!-- Pastor 10: Rev. Claude Habineza -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <div class="pastor-photo-placeholder">
+                        <span class="cross-icon">✝</span>
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. Claude Habineza</h3>
+                    <p class="pastor-title">Ordained Pastor</p>
+                    <div class="pastor-detail"><span class="icon">🎵</span><span>Former JYANUMUCYO choir member</span></div>
+                    <div class="pastor-detail"><span class="icon">✝</span><span>Ordained into pastoral ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">🙏</span><span>Currently serving in active ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">⭐</span><span>Spiritual formation through choir</span></div>
+                </div>
+            </div>
+
+            <!-- Pastor 11: Rev. Obadia -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <div class="pastor-photo-placeholder">
+                        <span class="cross-icon">✝</span>
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. Obadia</h3>
+                    <p class="pastor-title">Ordained Pastor</p>
+                    <div class="pastor-detail"><span class="icon">🎵</span><span>Former JYANUMUCYO choir member</span></div>
+                    <div class="pastor-detail"><span class="icon">✝</span><span>Ordained into pastoral ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">🙏</span><span>Currently serving in active ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">⭐</span><span>Spiritual formation through choir</span></div>
+                </div>
+            </div>
+
+            <!-- Pastor 12: Rev. Jonas -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <div class="pastor-photo-placeholder">
+                        <span class="cross-icon">✝</span>
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. Jonas</h3>
+                    <p class="pastor-title">Ordained Pastor</p>
+                    <div class="pastor-detail"><span class="icon">🎵</span><span>Former JYANUMUCYO choir member</span></div>
+                    <div class="pastor-detail"><span class="icon">✝</span><span>Ordained into pastoral ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">🙏</span><span>Currently serving in active ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">⭐</span><span>Spiritual formation through choir</span></div>
+                </div>
+            </div>
+
+            <!-- Pastor 13: Rev. Mukunzi -->
+            <div class="pastor-card">
+                <div class="pastor-photo">
+                    <div class="pastor-photo-placeholder">
+                        <span class="cross-icon">✝</span>
+                        <p>Photo Coming Soon</p>
+                    </div>
+                    <div class="pastor-badge">✝</div>
+                </div>
+                <div class="pastor-info">
+                    <h3 class="pastor-name">Rev. Mukunzi</h3>
+                    <p class="pastor-title">Ordained Pastor</p>
+                    <div class="pastor-detail"><span class="icon">🎵</span><span>Former JYANUMUCYO choir member</span></div>
+                    <div class="pastor-detail"><span class="icon">✝</span><span>Ordained into pastoral ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">🙏</span><span>Currently serving in active ministry</span></div>
+                    <div class="pastor-detail"><span class="icon">⭐</span><span>Spiritual formation through choir</span></div>
+                </div>
+            </div>
+
         </div>
     </section>
+
+    <!-- Legacy Section -->
+    <div class="legacy-section">
+        <h2>A Living Legacy</h2>
+        <blockquote>
+            "The fruit of JYANUMUCYO is not only the songs we sing, but the servants we raise for God's kingdom."
+        </blockquote>
+        <p>Since 1995, JYANUMUCYO Choir has been more than a musical ministry — it has been a school of faith, character, and calling. We celebrate every pastor who was shaped within our community as a testament to what God can do through faithful worship and fellowship.</p>
+
+        <div class="stats-row">
+            <div class="stat-box">
+                <span class="number">13</span>
+                <span class="label">Ordained Pastors</span>
+            </div>
+            <div class="stat-box">
+                <span class="number">30+</span>
+                <span class="label">Years of Ministry</span>
+            </div>
+            <div class="stat-box">
+                <span class="number">60+</span>
+                <span class="label">Active Members</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
      <!-- Footer -->
     <footer>
         <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">JYANUMUCYO</h2>
@@ -94,7 +775,7 @@
             <a href="https://www.facebook.com/profile.php?id=61564339781863" target="_blank" title="Facebook">📘</a>
             <a href="https://twitter.com/JyanumucyoChoir" target="_blank" title="Twitter/X">🐦</a>
             <a href="mailto:jyanumucyochoir@gmail.com" title="Email">✉️</a>
-             <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
+            <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
         </div>
     </footer>
 </body>
