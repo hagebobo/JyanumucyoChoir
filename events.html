@@ -29,74 +29,70 @@
         .social-links {margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem;}
         .social-links a {color: var(--light); font-size: 1.5rem; transition: transform 0.3s ease;}
         .social-links a:hover {transform: scale(1.2); color: var(--gold);}
-        @media (max-width: 768px) {
-            .page-header h1 {font-size: 2.5rem;}
-            nav ul {gap: 1rem;}
-            nav a {font-size: 0.8rem;}
-        }
+        @media (max-width: 768px) {.page-header h1 {font-size: 2.5rem;} nav ul {gap: 1rem;} nav a {font-size: 0.8rem;}}
     </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="mission.html">Mission</a></li>
-            <li><a href="history.html">History</a></li>
-            <li><a href="leadership.html">Leadership</a></li>
-            <li><a href="pastors.html">Pastors</a></li>
-            <li><a href="members.html">Members</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="events.html" class="active">Events</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="join.html">Join Us</a></li>
-            <li><a href="admin.html">Admin</a></li>
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="mission.html" data-i18n="nav_mission">Mission</a></li>
+            <li><a href="history.html" data-i18n="nav_history">History</a></li>
+            <li><a href="leadership.html" data-i18n="nav_leadership">Leadership</a></li>
+            <li><a href="pastors.html" data-i18n="nav_pastors">Pastors</a></li>
+            <li><a href="members.html" data-i18n="nav_members">Members</a></li>
+            <li><a href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+            <li><a href="events.html" class="active" data-i18n="nav_events">Events</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+            <li><a href="join.html" data-i18n="nav_join">Join Us</a></li>
+            <li><a href="admin.html" data-i18n="nav_admin">Admin</a></li>
         </ul>
     </nav>
     <div class="page-header">
-        <h1>Upcoming Events</h1>
-        <p>Join Us in Worship and Celebration</p>
+        <h1 data-i18n="events_title">Upcoming Events</h1>
+        <p data-i18n="events_subtitle">Join Us in Worship and Celebration</p>
     </div>
     <section class="content-section">
         <div class="events-list">
             <div class="event-item">
                 <div class="event-date">March 15, 2026</div>
-                <h3 class="event-title">Easter Celebration Concert</h3>
-                <p class="event-description">Join us for a special Easter celebration featuring traditional hymns and contemporary worship songs. The event will be held at the Cathedral starting at 6:00 PM.</p>
+                <h3 class="event-title" data-i18n="event1_title">Easter Celebration Concert</h3>
+                <p class="event-description" data-i18n="event1_text">Join us for a special Easter celebration featuring traditional hymns and contemporary worship songs.</p>
             </div>
             <div class="event-item">
                 <div class="event-date">April 20, 2026</div>
-                <h3 class="event-title">NNCA Regional Festival</h3>
-                <p class="event-description">JYANUMUCYO will be performing at the Regional NNCA Festival, showcasing our finest pieces alongside other talented choirs from across the region.</p>
+                <h3 class="event-title" data-i18n="event2_title">NNCA Regional Festival</h3>
+                <p class="event-description" data-i18n="event2_text">JYANUMUCYO will be performing at the Regional NNCA Festival.</p>
             </div>
             <div class="event-item">
                 <div class="event-date">May 10, 2026</div>
-                <h3 class="event-title">Community Outreach Performance</h3>
-                <p class="event-description">A special performance at the Community Center aimed at spreading hope and inspiration through music. Free admission, all are welcome.</p>
+                <h3 class="event-title" data-i18n="event3_title">Community Outreach Performance</h3>
+                <p class="event-description" data-i18n="event3_text">A special performance at the Community Center. Free admission, all are welcome.</p>
             </div>
             <div class="event-item">
-                <div class="event-date">Weekly Practice</div>
-                <h3 class="event-title">Choir Rehearsals</h3>
-                <p class="event-description">Every Wednesday and Friday from 17:15 PM to 19:30 PM. All members are expected to attend. New members are welcome to observe and join!</p>
+                <div class="event-date" data-i18n="events_subtitle">Weekly Practice</div>
+                <h3 class="event-title" data-i18n="event4_title">Choir Rehearsals</h3>
+                <p class="event-description" data-i18n="event4_text">Every Wednesday and Friday from 17:15 PM to 19:30 PM.</p>
             </div>
         </div>
-        <div style="margin-top: 4rem; text-align: center; padding: 3rem; background: linear-gradient(135deg, var(--primary) 0.1%, var(--accent) 10%); border-radius: 10px; color: white;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Want to Attend Our Events?</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Stay updated with our latest performances and events. Contact us for more information or follow us on social media.</p>
-            <a href="contact.html" style="display: inline-block; padding: 1rem 2rem; background: var(--gold); color: white; text-decoration: none; border-radius: 5px; font-weight: 600; text-transform: uppercase;">Contact Us</a>
+        <div style="margin-top:4rem;text-align:center;padding:3rem;background:linear-gradient(135deg,var(--primary) 0.1%,var(--accent) 10%);border-radius:10px;color:white;">
+            <h2 style="font-size:2.5rem;margin-bottom:1rem;" data-i18n="events_cta_title">Want to Attend Our Events?</h2>
+            <p style="font-size:1.2rem;margin-bottom:2rem;" data-i18n="events_cta_text">Stay updated with our latest performances and events.</p>
+            <a href="contact.html" style="display:inline-block;padding:1rem 2rem;background:var(--gold);color:white;text-decoration:none;border-radius:5px;font-weight:600;text-transform:uppercase;" data-i18n="events_cta_btn">Contact Us</a>
         </div>
     </section>
-     <!-- Footer -->
     <footer>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">JYANUMUCYO</h2>
-        <p>EAR Diocese Butare</p>
-        <p>&copy; 2026 JYANUMUCYO Choir. All rights reserved.</p>
+        <h2 style="font-size:2.5rem;margin-bottom:1rem;">JYANUMUCYO</h2>
+        <p data-i18n="footer_diocese">EAR Diocese Butare</p>
+        <p data-i18n="footer_rights">© 2026 JYANUMUCYO Choir. All rights reserved.</p>
         <div class="social-links">
             <a href="https://www.facebook.com/profile.php?id=61564339781863" target="_blank" title="Facebook">📘</a>
             <a href="https://twitter.com/JyanumucyoChoir" target="_blank" title="Twitter/X">🐦</a>
             <a href="mailto:jyanumucyochoir@gmail.com" title="Email">✉️</a>
-             <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
+            <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
         </div>
     </footer>
+    <script src="lang.js"></script>
 </body>
 </html>

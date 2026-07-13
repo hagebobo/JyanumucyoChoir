@@ -6,14 +6,7 @@
     <title>Mission - JYANUMUCYO Choir</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1a4d2e;
-            --secondary: #c8a882;
-            --accent: #8b4513;
-            --dark: #0f1419;
-            --light: #f8f6f3;
-            --gold: #d4af37;
-        }
+        :root {--primary: #1a4d2e; --secondary: #c8a882; --accent: #8b4513; --dark: #0f1419; --light: #f8f6f3; --gold: #d4af37;}
         * {margin: 0; padding: 0; box-sizing: border-box;}
         body {font-family: 'Montserrat', sans-serif; color: var(--dark); line-height: 1.6; padding-top: 80px;}
         h1, h2, h3 {font-family: 'Cormorant Garamond', serif; font-weight: 700;}
@@ -35,79 +28,73 @@
         .social-links {margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem;}
         .social-links a {color: var(--light); font-size: 1.5rem; transition: transform 0.3s ease;}
         .social-links a:hover {transform: scale(1.2); color: var(--gold);}
-        @media (max-width: 768px) {
-            .page-header h1 {font-size: 2.5rem;}
-            nav ul {gap: 1rem;}
-            nav a {font-size: 0.8rem;}
-        }
+        @media (max-width: 768px) {.page-header h1 {font-size: 2.5rem;} nav ul {gap: 1rem;} nav a {font-size: 0.8rem;}}
     </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="mission.html" class="active">Mission</a></li>
-            <li><a href="history.html">History</a></li>
-            <li><a href="leadership.html">Leadership</a></li>
-            <li><a href="pastors.html">Pastors</a></li>
-            <li><a href="members.html">Members</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="join.html">Join Us</a></li>
-            <li><a href="admin.html">Admin</a></li>
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="mission.html" class="active" data-i18n="nav_mission">Mission</a></li>
+            <li><a href="history.html" data-i18n="nav_history">History</a></li>
+            <li><a href="leadership.html" data-i18n="nav_leadership">Leadership</a></li>
+            <li><a href="pastors.html" data-i18n="nav_pastors">Pastors</a></li>
+            <li><a href="members.html" data-i18n="nav_members">Members</a></li>
+            <li><a href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+            <li><a href="join.html" data-i18n="nav_join">Join Us</a></li>
+            <li><a href="admin.html" data-i18n="nav_admin">Admin</a></li>
         </ul>
     </nav>
     <div class="page-header">
-        <h1>Our Mission & Vision</h1>
-        <p>Glorifying God Through Music and Ministry</p>
+        <h1 data-i18n="mission_title">Our Mission & Vision</h1>
+        <p data-i18n="mission_subtitle">Glorifying God Through Music and Ministry</p>
     </div>
     <section class="content-section">
         <div class="mission-grid">
             <div class="mission-card">
-                <h3>🎵 Musical Excellence</h3>
-                <p>We strive to achieve the highest standards of choral performance, continuously developing our skills and repertoire to deliver inspiring worship experiences through music.</p>
+                <h3 data-i18n="mission_card1_title">🎵 Musical Excellence</h3>
+                <p data-i18n="mission_card1_text">We strive to achieve the highest standards of choral performance.</p>
             </div>
             <div class="mission-card">
-                <h3>✝️ Spiritual Formation</h3>
-                <p>Beyond music, we are committed to nurturing the spiritual growth of our members, helping them develop a deeper relationship with God and stronger faith foundations.</p>
+                <h3 data-i18n="mission_card2_title">✝️ Spiritual Formation</h3>
+                <p data-i18n="mission_card2_text">Beyond music, we are committed to nurturing the spiritual growth of our members.</p>
             </div>
             <div class="mission-card">
-                <h3>🤝 Community Building</h3>
-                <p>We create a welcoming family where members support each other, build lasting friendships, and grow together in faith and service to the community.</p>
+                <h3 data-i18n="mission_card3_title">🤝 Community Building</h3>
+                <p data-i18n="mission_card3_text">We create a welcoming family where members support each other.</p>
             </div>
             <div class="mission-card">
-                <h3>📚 Youth Development</h3>
-                <p>We are dedicated to mentoring young people, providing them with opportunities to discover and develop their talents while building character and leadership skills.</p>
+                <h3 data-i18n="mission_card4_title">📚 Youth Development</h3>
+                <p data-i18n="mission_card4_text">We are dedicated to mentoring young people.</p>
             </div>
             <div class="mission-card">
-                <h3>🌍 Community Outreach</h3>
-                <p>Through performances and ministry, we reach out to the broader community, spreading hope, inspiration, and the message of God's love through our music.</p>
+                <h3 data-i18n="mission_card5_title">🌍 Community Outreach</h3>
+                <p data-i18n="mission_card5_text">Through performances and ministry, we reach out to the broader community.</p>
             </div>
             <div class="mission-card">
-                <h3>🌟 Legacy Building</h3>
-                <p>We preserve and pass on our rich heritage while embracing innovation, ensuring JYANUMUCYO continues to inspire future generations.</p>
+                <h3 data-i18n="mission_card6_title">🌟 Legacy Building</h3>
+                <p data-i18n="mission_card6_text">We preserve and pass on our rich heritage while embracing innovation.</p>
             </div>
         </div>
-        <div style="margin-top: 5rem; text-align: center; padding: 3rem; background: linear-gradient(135deg, #f8f6f3 0%, #ede8e0 100%); border-radius: 10px;">
-            <h2 style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1.5rem;">Our Vision</h2>
-            <p style="font-size: 1.2rem; color: #555; max-width: 800px; margin: 0 auto; line-height: 1.8;">
-                To be a leading choir in Rwanda and beyond, recognized for our musical excellence, spiritual depth, and positive impact on individuals and communities. We envision JYANUMUCYO as a place where voices unite in perfect harmony, lives are transformed, and God's glory shines through every note we sing.
-            </p>
+        <div style="margin-top:5rem;text-align:center;padding:3rem;background:linear-gradient(135deg,#f8f6f3 0%,#ede8e0 100%);border-radius:10px;">
+            <h2 style="font-size:2.5rem;color:var(--primary);margin-bottom:1.5rem;" data-i18n="mission_vision_title">Our Vision</h2>
+            <p style="font-size:1.2rem;color:#555;max-width:800px;margin:0 auto;line-height:1.8;" data-i18n="mission_vision_text">To be a leading choir in Rwanda and beyond.</p>
         </div>
     </section>
-     <!-- Footer -->
     <footer>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">JYANUMUCYO</h2>
-        <p>EAR Diocese Butare</p>
-        <p>&copy; 2026 JYANUMUCYO Choir. All rights reserved.</p>
+        <h2 style="font-size:2.5rem;margin-bottom:1rem;">JYANUMUCYO</h2>
+        <p data-i18n="footer_diocese">EAR Diocese Butare</p>
+        <p data-i18n="footer_rights">© 2026 JYANUMUCYO Choir. All rights reserved.</p>
         <div class="social-links">
             <a href="https://www.facebook.com/profile.php?id=61564339781863" target="_blank" title="Facebook">📘</a>
             <a href="https://twitter.com/JyanumucyoChoir" target="_blank" title="Twitter/X">🐦</a>
             <a href="mailto:jyanumucyochoir@gmail.com" title="Email">✉️</a>
-             <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
+            <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
         </div>
     </footer>
+    <script src="lang.js"></script>
 </body>
 </html>

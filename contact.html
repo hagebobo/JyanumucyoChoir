@@ -40,104 +40,98 @@
         .social-links {margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem;}
         .social-links a {color: var(--light); font-size: 1.5rem; transition: transform 0.3s ease;}
         .social-links a:hover {transform: scale(1.2); color: var(--gold);}
-        @media (max-width: 768px) {
-            .contact-grid {grid-template-columns: 1fr;}
-            .page-header h1 {font-size: 2.5rem;}
-            nav ul {gap: 1rem;}
-            nav a {font-size: 0.8rem;}
-        }
+        @media (max-width: 768px) {.contact-grid {grid-template-columns: 1fr;} .page-header h1 {font-size: 2.5rem;} nav ul {gap: 1rem;} nav a {font-size: 0.8rem;}}
     </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="mission.html">Mission</a></li>
-            <li><a href="history.html">History</a></li>
-            <li><a href="leadership.html">Leadership</a></li>
-            <li><a href="pastors.html">Pastors</a></li>
-            <li><a href="members.html">Members</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="contact.html" class="active">Contact</a></li>
-            <li><a href="join.html">Join Us</a></li>
-            <li><a href="admin.html">Admin</a></li>
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="mission.html" data-i18n="nav_mission">Mission</a></li>
+            <li><a href="history.html" data-i18n="nav_history">History</a></li>
+            <li><a href="leadership.html" data-i18n="nav_leadership">Leadership</a></li>
+            <li><a href="pastors.html" data-i18n="nav_pastors">Pastors</a></li>
+            <li><a href="members.html" data-i18n="nav_members">Members</a></li>
+            <li><a href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="contact.html" class="active" data-i18n="nav_contact">Contact</a></li>
+            <li><a href="join.html" data-i18n="nav_join">Join Us</a></li>
+            <li><a href="admin.html" data-i18n="nav_admin">Admin</a></li>
         </ul>
     </nav>
     <div class="page-header">
-        <h1>Get In Touch</h1>
-        <p>We'd Love to Hear From You</p>
+        <h1 data-i18n="contact_title">Get In Touch</h1>
+        <p data-i18n="contact_subtitle">We'd Love to Hear From You</p>
     </div>
     <section class="content-section">
         <div class="contact-grid">
             <div class="contact-info">
-                <h2>Contact Information</h2>
+                <h2 data-i18n="contact_info_title">Contact Information</h2>
                 <div class="contact-item">
-                    <strong>📧 Email</strong>
+                    <strong data-i18n="contact_email_label">📧 Email</strong>
                     <span><a href="mailto:jyanumucyochoir@gmail.com">jyanumucyochoir@gmail.com</a></span>
                 </div>
                 <div class="contact-item">
-                    <strong>📱 Phone 1: President</strong>
+                    <strong data-i18n="contact_phone1_label">📱 Phone 1: President</strong>
                     <span><a href="tel:+250788639981">+250 788 639 981</a></span>
                 </div>
                 <div class="contact-item">
-                    <strong>📱 Phone 2 : Secretary</strong>
+                    <strong data-i18n="contact_phone2_label">📱 Phone 2: Secretary</strong>
                     <span><a href="tel:+250788847851">+250 788 847 851</a></span>
                 </div>
                 <div class="contact-item">
-                    <strong>📍 Location</strong>
-                    <span>EAR Diocese Butare, Rwanda,</span>
-                    <span>St Paul Cathedral</span>
+                    <strong data-i18n="contact_location_label">📍 Location</strong>
+                    <span data-i18n="contact_location_val">EAR Diocese Butare, Rwanda, St Paul Cathedral</span>
                 </div>
                 <div class="contact-item">
-                    <strong>🎵 Practice Schedule</strong>
-                    <span>Every Wednesday and Friday<br>17:15 PM - 19:30 PM</span>
+                    <strong data-i18n="contact_practice_label">🎵 Practice Schedule</strong>
+                    <span data-i18n="contact_practice_val">Every Wednesday and Friday — 17:15 PM to 19:30 PM</span>
                 </div>
                 <div class="contact-item">
-                    <strong>🕐 Office Hours</strong>
-                    <span>Monday - Friday<br>9:00 AM - 5:00 PM</span>
+                    <strong data-i18n="contact_hours_label">🕐 Office Hours</strong>
+                    <span data-i18n="contact_hours_val">Monday - Friday, 9:00 AM - 5:00 PM</span>
                 </div>
             </div>
             <div class="contact-form">
-                <h2>Send Us a Message</h2>
+                <h2 data-i18n="contact_form_title">Send Us a Message</h2>
                 <form>
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
+                        <label for="name" data-i18n="contact_name">Full Name *</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
+                        <label for="email" data-i18n="contact_email">Email Address *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Phone Number</label>
+                        <label for="phone" data-i18n="contact_phone">Phone Number</label>
                         <input type="tel" id="phone" name="phone">
                     </div>
                     <div class="form-group">
-                        <label for="subject">Subject *</label>
+                        <label for="subject" data-i18n="contact_subject">Subject *</label>
                         <input type="text" id="subject" name="subject" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" required placeholder="Tell us what's on your mind..."></textarea>
+                        <label for="message" data-i18n="contact_message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn" data-i18n="contact_send_btn">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
-     <!-- Footer -->
     <footer>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">JYANUMUCYO</h2>
-        <p>EAR Diocese Butare</p>
-        <p>&copy; 2026 JYANUMUCYO Choir. All rights reserved.</p>
+        <h2 style="font-size:2.5rem;margin-bottom:1rem;">JYANUMUCYO</h2>
+        <p data-i18n="footer_diocese">EAR Diocese Butare</p>
+        <p data-i18n="footer_rights">© 2026 JYANUMUCYO Choir. All rights reserved.</p>
         <div class="social-links">
             <a href="https://www.facebook.com/profile.php?id=61564339781863" target="_blank" title="Facebook">📘</a>
             <a href="https://twitter.com/JyanumucyoChoir" target="_blank" title="Twitter/X">🐦</a>
             <a href="mailto:jyanumucyochoir@gmail.com" title="Email">✉️</a>
-             <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
+            <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
         </div>
     </footer>
+    <script src="lang.js"></script>
 </body>
 </html>

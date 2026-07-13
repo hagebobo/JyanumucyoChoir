@@ -23,7 +23,8 @@
         .join-intro p {font-size: 1.2rem; color: #555; line-height: 1.8; max-width: 800px; margin: 0 auto 1rem;}
         .benefits-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 4rem 0;}
         .benefit-card {background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); text-align: center;}
-        .benefit-card h3 {color: var(--primary); font-size: 1.8rem; margin: 1rem 0;}
+        .benefit-card .icon {font-size: 2rem;}
+        .benefit-card h3 {color: var(--primary); font-size: 1.5rem; margin: 0.5rem 0;}
         .benefit-card p {color: #555;}
         .join-form {background: white; padding: 3rem; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); max-width: 800px; margin: 0 auto;}
         .join-form h2 {color: var(--primary); font-size: 2.5rem; margin-bottom: 2rem; text-align: center;}
@@ -43,130 +44,119 @@
         .social-links {margin-top: 2rem; display: flex; justify-content: center; gap: 1.5rem;}
         .social-links a {color: var(--light); font-size: 1.5rem; transition: transform 0.3s ease;}
         .social-links a:hover {transform: scale(1.2); color: var(--gold);}
-        @media (max-width: 768px) {
-            .page-header h1 {font-size: 2.5rem;}
-            nav ul {gap: 1rem;}
-            nav a {font-size: 0.8rem;}
-        }
+        @media (max-width: 768px) {.page-header h1 {font-size: 2.5rem;} nav ul {gap: 1rem;} nav a {font-size: 0.8rem;}}
     </style>
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="mission.html">Mission</a></li>
-            <li><a href="history.html">History</a></li>
-            <li><a href="leadership.html">Leadership</a></li>
-            <li><a href="pastors.html">Pastors</a></li>
-            <li><a href="members.html">Members</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="join.html" class="active">Join Us</a></li>
-            <li><a href="admin.html">Admin</a></li>
+            <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+            <li><a href="about.html" data-i18n="nav_about">About</a></li>
+            <li><a href="mission.html" data-i18n="nav_mission">Mission</a></li>
+            <li><a href="history.html" data-i18n="nav_history">History</a></li>
+            <li><a href="leadership.html" data-i18n="nav_leadership">Leadership</a></li>
+            <li><a href="pastors.html" data-i18n="nav_pastors">Pastors</a></li>
+            <li><a href="members.html" data-i18n="nav_members">Members</a></li>
+            <li><a href="gallery.html" data-i18n="nav_gallery">Gallery</a></li>
+            <li><a href="events.html" data-i18n="nav_events">Events</a></li>
+            <li><a href="contact.html" data-i18n="nav_contact">Contact</a></li>
+            <li><a href="join.html" class="active" data-i18n="nav_join">Join Us</a></li>
+            <li><a href="admin.html" data-i18n="nav_admin">Admin</a></li>
         </ul>
     </nav>
     <div class="page-header">
-        <h1>Join JYANUMUCYO</h1>
-        <p>Become Part of Our Musical Family</p>
+        <h1 data-i18n="join_title">Join JYANUMUCYO</h1>
+        <p data-i18n="join_subtitle">Become Part of Our Musical Family</p>
     </div>
     <section class="content-section">
         <div class="join-intro">
-            <h2>Why Join JYANUMUCYO?</h2>
-            <p>JYANUMUCYO offers more than just musical training. We provide a supportive community where you can grow spiritually, develop your talents, and make lifelong friendships. Whether you're an experienced singer or just beginning, there's a place for you here.</p>
-            <p>Our choir has a rich 30-year legacy of excellence, and we're always looking for passionate individuals to join our family.</p>
+            <h2 data-i18n="join_why_title">Why Join JYANUMUCYO?</h2>
+            <p data-i18n="join_why_p1">JYANUMUCYO offers more than just musical training.</p>
+            <p data-i18n="join_why_p2">Our choir has a rich 30-year legacy of excellence.</p>
         </div>
         <div class="benefits-grid">
             <div class="benefit-card">
-                <h3>🎵</h3>
-                <h3>Musical Training</h3>
-                <p>Develop your vocal skills under experienced leadership</p>
+                <div class="icon">🎵</div>
+                <h3 data-i18n="join_benefit1">Musical Training</h3>
+                <p data-i18n="join_benefit1_text">Develop your vocal skills under experienced leadership</p>
             </div>
             <div class="benefit-card">
-                <h3>✝️</h3>
-                <h3>Spiritual Growth</h3>
-                <p>Deepen your faith through worship and fellowship</p>
+                <div class="icon">✝️</div>
+                <h3 data-i18n="join_benefit2">Spiritual Growth</h3>
+                <p data-i18n="join_benefit2_text">Deepen your faith through worship and fellowship</p>
             </div>
             <div class="benefit-card">
-                <h3>🤝</h3>
-                <h3>Community</h3>
-                <p>Build lasting friendships with fellow members</p>
+                <div class="icon">🤝</div>
+                <h3 data-i18n="join_benefit3">Community</h3>
+                <p data-i18n="join_benefit3_text">Build lasting friendships with fellow members</p>
             </div>
             <div class="benefit-card">
-                <h3>🎭</h3>
-                <h3>Performance</h3>
-                <p>Regular opportunities to perform and share your gift</p>
+                <div class="icon">🎭</div>
+                <h3 data-i18n="join_benefit4">Performance</h3>
+                <p data-i18n="join_benefit4_text">Regular opportunities to perform and share your gift</p>
             </div>
         </div>
-
         <div class="join-form">
-            <h2>Application Form</h2>
-
-            <!-- Shown when applications are CLOSED (set by admin) -->
-            <div id="formClosedMsg" style="display:none; text-align:center; padding:3rem 2rem; background:#fff3cd; border:2px solid #ffc107; border-radius:10px; margin-bottom:1rem;">
-                <div style="font-size:3rem; margin-bottom:1rem;">🔒</div>
-                <h3 style="font-family:'Cormorant Garamond',serif; color:#856404; font-size:2rem; margin-bottom:1rem;">Applications Currently Closed</h3>
-                <p style="color:#856404; font-size:1.05rem; line-height:1.8;">We are not accepting new applications at this time. Please check back later or contact us directly at <a href="mailto:jyanumucyochoir@gmail.com" style="color:var(--accent);">jyanumucyochoir@gmail.com</a>.</p>
+            <h2 data-i18n="join_form_title">Application Form</h2>
+            <!-- Closed message -->
+            <div id="formClosedMsg" style="display:none;text-align:center;padding:3rem 2rem;background:#fff3cd;border:2px solid #ffc107;border-radius:10px;margin-bottom:1rem;">
+                <div style="font-size:3rem;margin-bottom:1rem;">🔒</div>
+                <h3 style="font-family:'Cormorant Garamond',serif;color:#856404;font-size:2rem;margin-bottom:1rem;" data-i18n="join_closed_title">Applications Currently Closed</h3>
+                <p style="color:#856404;font-size:1.05rem;line-height:1.8;" data-i18n="join_closed_text">We are not accepting new applications at this time.</p>
             </div>
-
-            <!-- Actual form (hidden when closed) -->
+            <!-- Form -->
             <div id="formContainer">
-                <div class="alert alert-success" id="successMsg">
-                    ✅ Your application has been submitted successfully! We will contact you within 5-7 business days.
-                </div>
+                <div class="alert alert-success" id="successMsg" data-i18n="join_success">✅ Your application has been submitted successfully!</div>
                 <div class="alert alert-error" id="errorMsg"></div>
                 <form id="applicationForm">
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
+                        <label for="name" data-i18n="join_field_name">Full Name *</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address *</label>
+                        <label for="email" data-i18n="join_field_email">Email Address *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Phone Number *</label>
+                        <label for="phone" data-i18n="join_field_phone">Phone Number *</label>
                         <input type="tel" id="phone" name="phone" required>
                     </div>
                     <div class="form-group">
-                        <label for="age">Age</label>
+                        <label for="age" data-i18n="join_field_age">Age</label>
                         <input type="number" id="age" name="age" min="5" max="100">
                     </div>
                     <div class="form-group">
-                        <label for="voice">Voice Part *</label>
+                        <label for="voice" data-i18n="join_field_voice">Voice Part *</label>
                         <select id="voice" name="voice" required>
-                            <option value="">Select your voice type</option>
+                            <option value="" data-i18n="join_voice_select">Select your voice type</option>
                             <option value="soprano">Soprano</option>
                             <option value="alto">Alto</option>
                             <option value="tenor">Tenor</option>
                             <option value="bass">Bass</option>
-                            <option value="unsure">Not Sure</option>
+                            <option value="unsure" data-i18n="join_voice_unsure">Not Sure</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="experience">Musical Experience *</label>
-                        <textarea id="experience" name="experience" required placeholder="Tell us about your musical background and experience..."></textarea>
+                        <label for="experience" data-i18n="join_field_experience">Musical Experience *</label>
+                        <textarea id="experience" name="experience" required></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="motivation">Why Do You Want to Join JYANUMUCYO? *</label>
-                        <textarea id="motivation" name="motivation" required placeholder="Share your motivation..."></textarea>
+                        <label for="motivation" data-i18n="join_field_motivation">Why Do You Want to Join JYANUMUCYO? *</label>
+                        <textarea id="motivation" name="motivation" required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+                    <button type="submit" class="submit-btn" id="submitBtn" data-i18n="join_submit_btn">Submit Application</button>
                 </form>
             </div>
         </div>
-
-        <div style="margin-top: 4rem; text-align: center; padding: 3rem; background: #f8f6f3; border-radius: 10px;">
-            <h3 style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;">What Happens Next?</h3>
-            <p style="font-size: 1.1rem; color: #555; line-height: 1.8;">After submitting your application, our team will review it and contact you within 5-7 business days. You'll be invited to attend a practice session where you can meet the choir and we can assess your voice. Don't worry - it's a friendly, welcoming process!</p>
+        <div style="margin-top:4rem;text-align:center;padding:3rem;background:#f8f6f3;border-radius:10px;">
+            <h3 style="color:var(--primary);font-size:2rem;margin-bottom:1rem;" data-i18n="join_next_title">What Happens Next?</h3>
+            <p style="font-size:1.1rem;color:#555;line-height:1.8;" data-i18n="join_next_text">After submitting your application, our team will review it and contact you within 5-7 business days.</p>
         </div>
     </section>
-
     <footer>
-        <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">JYANUMUCYO</h2>
-        <p>EAR Diocese Butare</p>
-        <p>&copy; 2026 JYANUMUCYO Choir. All rights reserved.</p>
+        <h2 style="font-size:2.5rem;margin-bottom:1rem;">JYANUMUCYO</h2>
+        <p data-i18n="footer_diocese">EAR Diocese Butare</p>
+        <p data-i18n="footer_rights">© 2026 JYANUMUCYO Choir. All rights reserved.</p>
         <div class="social-links">
             <a href="https://www.facebook.com/profile.php?id=61564339781863" target="_blank" title="Facebook">📘</a>
             <a href="https://twitter.com/JyanumucyoChoir" target="_blank" title="Twitter/X">🐦</a>
@@ -174,66 +164,48 @@
             <a href="https://www.youtube.com/@JyanumucyochoirEARButare" target="_blank" title="YouTube">▶️</a>
         </div>
     </footer>
-
+    <script src="lang.js"></script>
     <script type="module">
         import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-
         const SUPABASE_URL = 'https://glaknamdycwwufwhbbpz.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdsYWtuYW1keWN3d3Vmd2hiYnB6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODM2ODc0NzAsImV4cCI6MjA5OTI2MzQ3MH0.CUPy9gr7nOMtKtcdLWdma_hAfH0wrkDXwmwcXwr-jH8';
         const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // ── Check if applications are open ──────────────────
         async function checkApplicationStatus() {
-            const { data, error } = await supabase
-                .from('site_settings')
-                .select('value')
-                .eq('key', 'applications_open')
-                .single();
-
-            // Default to open if setting not found
+            const { data, error } = await supabase.from('site_settings').select('value').eq('key', 'applications_open').single();
             const isOpen = error || !data ? true : data.value === 'true';
-
             if (!isOpen) {
                 document.getElementById('formContainer').style.display = 'none';
                 document.getElementById('formClosedMsg').style.display = 'block';
             }
         }
-
         checkApplicationStatus();
 
-        // ── Form submission ─────────────────────────────────
         document.getElementById('applicationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-
+            const lang = localStorage.getItem('jyanu_lang') || 'en';
+            const t = window._jyanuTranslations ? window._jyanuTranslations[lang] : null;
             const submitBtn = document.getElementById('submitBtn');
             const successMsg = document.getElementById('successMsg');
-            const errorMsg   = document.getElementById('errorMsg');
-
+            const errorMsg = document.getElementById('errorMsg');
             successMsg.style.display = 'none';
-            errorMsg.style.display   = 'none';
-
-            submitBtn.disabled    = true;
-            submitBtn.textContent = 'Submitting...';
-
+            errorMsg.style.display = 'none';
+            submitBtn.disabled = true;
+            submitBtn.textContent = lang === 'rw' ? 'Twohereza...' : 'Submitting...';
             const ageValue = document.getElementById('age').value;
-
             const applicationData = {
-                full_name:  document.getElementById('name').value.trim(),
-                email:      document.getElementById('email').value.trim(),
-                phone:      document.getElementById('phone').value.trim(),
-                age:        ageValue ? parseInt(ageValue) : null,
+                full_name: document.getElementById('name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                phone: document.getElementById('phone').value.trim(),
+                age: ageValue ? parseInt(ageValue) : null,
                 voice_part: document.getElementById('voice').value,
                 experience: document.getElementById('experience').value.trim(),
                 motivation: document.getElementById('motivation').value.trim(),
-                status:     'pending'
+                status: 'pending'
             };
-
-            const { error } = await supabase
-                .from('applications')
-                .insert([applicationData]);
-
+            const { error } = await supabase.from('applications').insert([applicationData]);
             if (error) {
-                errorMsg.textContent  = '❌ Error: ' + error.message + '. Please try again or email us at jyanumucyochoir@gmail.com.';
+                errorMsg.textContent = '❌ ' + error.message;
                 errorMsg.style.display = 'block';
                 errorMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             } else {
@@ -241,9 +213,8 @@
                 successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 this.reset();
             }
-
-            submitBtn.disabled    = false;
-            submitBtn.textContent = 'Submit Application';
+            submitBtn.disabled = false;
+            submitBtn.textContent = lang === 'rw' ? 'Ohereza Ifishi' : 'Submit Application';
         });
     </script>
 </body>
