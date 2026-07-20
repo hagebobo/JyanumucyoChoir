@@ -20,7 +20,7 @@ const translations = {
     footer_rights: "© 2026 JYANUMUCYO Choir. All rights reserved.",
 
     // ── Index ────────────────────────────────────────────
-    index_tagline: "Voices United in Faith and Harmony",
+    index_tagline: "Jyanumucyo: Our Light, Christ's Pride.",
     index_stat1: "Active Members",
     index_stat2: "Years of Excellence",
     index_stat3: "Ordained Pastors",
