@@ -232,7 +232,7 @@ const translations = {
     footer_rights: "© 2026 Itsinda ry'Indirimbo JYANUMUCYO. Uburenganzira bwose bwahariwe.",
 
     // ── Index ────────────────────────────────────────────
-    index_tagline: "Amajwi Yunze Ubumwe mu Kwizera no Gusingiza",
+    index_tagline: "JYANUMUCYO Yacu Ishema rya Kristo",
     index_stat1: "Abanyamuryango Bakorana",
     index_stat2: "Imyaka y'Ubuhanga",
     index_stat3: "Abatambyi Boherejwe",
