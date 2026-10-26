@@ -85,8 +85,8 @@ const translations = {
     // ── Events ───────────────────────────────────────────
     events_title: "Upcoming Events",
     events_subtitle: "Join Us in Worship and Celebration",
-    event1_title: "Easter Celebration Concert",
-    event1_text: "Join us for a special Easter celebration featuring traditional hymns and contemporary worship songs. The event will be held at the Cathedral starting at 6:00 PM.",
+    event1_title: "JYANUMUCYO WEEK 2026",
+    event1_text: "A week dedicated to the JYANUMUCYO Choir, featuring worship, health screening, community outreach, and acts of love. October 11-18, 2026 in Huye & Nyamagabe Districts.",
     event2_title: "NNCA Regional Festival",
     event2_text: "JYANUMUCYO will be performing at the Regional NNCA Festival, showcasing our finest pieces alongside other talented choirs from across the region.",
     event3_title: "Community Outreach Performance",
@@ -355,8 +355,8 @@ const translations = {
     // ── Events ───────────────────────────────────────────
     events_title: "Ibikorwa Biri Imbere",
     events_subtitle: "Tutumanahane mu Gusenga no Gusezerera",
-    event1_title: "Ikinamico cy'Isabukuru ya Pasika",
-    event1_text: "Tutumanahane mu isabukuru ya Pasika idasanzwe, ifite indirimbo z'icyahozeho n'iz'ubu. Igikorwa kizabera mu Nzu y'Imana, gitangira saa mbiri z'ijoro.",
+    event1_title: "ICYUMWERU CYA JYANUMUCYO 2026",
+    event1_text: "Icyumweru cyahariwe Korali JYANUMUCYO, gifite gusenga, isuzuma ry'ubuzima, gukorera umuryango, n'ibikorwa by'urukundo. Ku wa 11-18 Ukwakira 2026 mu karere ka Huye na Nyamagabe.",
     event2_title: "Umukino w'NNCA wa Karere",
     event2_text: "JYANUMUCYO izagira uruhare mu Mukino w'NNCA wa Karere, igaragaza indirimbo zacu nziza hamwe n'amatsinda menshi y'indirimbo y'akarere.",
     event3_title: "Igikorwa cyo Gusogongera Umuryango",
